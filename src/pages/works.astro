@@ -6,6 +6,6 @@ import { SITE_TITLE } from '../consts';
 const works = (await getCollection('works')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <PageLayout title={`Works｜${SITE_TITLE}`} description="作品與專案選集。">
-	<header class="page-header"><p class="eyebrow">SELECTED WORKS</p><h1>Works</h1><p>Coming soon</p></header>
+	<header class="page-header"><p class="eyebrow">SELECTED WORKS</p><h1>Works</h1><p>{works.length} 件作品，持續更新中。</p></header>
 	<WorkGrid works={works} />
 </PageLayout>
