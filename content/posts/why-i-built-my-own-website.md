@@ -5,6 +5,10 @@ date: 2026-07-20
 updatedDate: 2026-07-20
 author: "梅爾 Merle"
 tags: [個人網站, Astro, GitHub Pages, WordPress, 內容創作, AI協作]
+series:
+  title: "網站製作筆記"
+  slug: "building-my-site"
+affiliateDisclosure: false
 draft: false
 ---
 

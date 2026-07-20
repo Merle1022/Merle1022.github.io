@@ -3,10 +3,11 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, withBase } from '../consts';
 
-interface Props { title: string; description: string; date: Date; updatedDate?: Date; author: string; tags: string[] }
-const { title, description, date, updatedDate, author, tags } = Astro.props;
+interface Series { title: string; slug: string }
+interface Props { title: string; description: string; date: Date; updatedDate?: Date; author: string; tags: string[]; series?: Series; affiliateDisclosure?: boolean }
+const { title, description, date, updatedDate, author, tags, series, affiliateDisclosure = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const articleSchema = {
 	'@context': 'https://schema.org',
@@ -35,8 +36,16 @@ const articleSchema = {
 					<h1>{title}</h1>
 					<p>{description}</p>
 					<p class="article-byline">作者：{author}</p>
+					{series && <a class="series-link" href={withBase(`blog/series/${series.slug}/`)}>專欄：{series.title}</a>}
 					<div class="tags">{tags.map((tag) => <span>#{tag}</span>)}</div>
 				</header>
+				{affiliateDisclosure && (
+					<aside class="affiliate-disclosure" aria-label="聯盟行銷揭露">
+						<strong>聯盟行銷揭露</strong>
+						<p>本文可能包含聯盟連結。若你透過連結完成購買，我可能獲得少量分潤，但不影響你的價格與我的評價。</p>
+					</aside>
+				)}
+				<slot name="toc" />
 				<div class="prose"><slot /></div>
 			</article>
 		</main>

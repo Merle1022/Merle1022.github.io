@@ -6,8 +6,33 @@ import { SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const series = Array.from(
+	posts.reduce((items, post) => {
+		if (!post.data.series) return items;
+		const current = items.get(post.data.series.slug);
+		items.set(post.data.series.slug, {
+			title: post.data.series.title,
+			slug: post.data.series.slug,
+			count: (current?.count ?? 0) + 1,
+		});
+		return items;
+	}, new Map<string, { title: string; slug: string; count: number }>()).values(),
+);
 ---
 <PageLayout title={`Blog｜${SITE_TITLE}`} description="所有文章，依發表日期由新到舊排列。">
 	<header class="page-header"><p class="eyebrow">ARCHIVE</p><h1>Blog</h1><p>所有文章，依日期由新到舊。</p></header>
+	{series.length > 0 && (
+		<section class="series-section" aria-labelledby="series-title">
+			<div class="section-heading"><h2 id="series-title">專欄</h2><p>{series.length} 個主題</p></div>
+			<div class="series-grid">
+				{series.map((item) => (
+					<a class="series-card" href={`${import.meta.env.BASE_URL}blog/series/${item.slug}/`}>
+						<span>專欄</span><h3>{item.title}</h3><p>{item.count} 篇文章 →</p>
+					</a>
+				))}
+			</div>
+		</section>
+	)}
+	<div class="section-heading article-list-heading"><h2>全部文章</h2><p>{posts.length} 篇</p></div>
 	<PostList posts={posts} />
 </PageLayout>

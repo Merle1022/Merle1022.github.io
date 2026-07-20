@@ -1,0 +1,26 @@
+---
+interface Heading {
+	depth: number;
+	slug: string;
+	text: string;
+}
+
+interface Props { headings: Heading[] }
+const { headings } = Astro.props;
+const visibleHeadings = headings.filter((heading) => heading.depth === 2);
+---
+{visibleHeadings.length > 0 && (
+	<nav class="table-of-contents" aria-labelledby="toc-title">
+		<div class="toc-heading">
+			<p class="eyebrow">QUICK NAVIGATION</p>
+			<h2 id="toc-title">文章目錄</h2>
+		</div>
+		<ol>
+			{visibleHeadings.map((heading) => (
+				<li class:list={[`toc-depth-${heading.depth}`]}>
+					<a href={`#${heading.slug}`}>{heading.text}</a>
+				</li>
+			))}
+		</ol>
+	</nav>
+)}

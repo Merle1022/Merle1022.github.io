@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import PostList from '../../../components/PostList.astro';
+import { SITE_TITLE, withBase } from '../../../consts';
+
+interface Props { title: string; posts: CollectionEntry<'posts'>[] }
+
+export async function getStaticPaths() {
+	const posts = await getCollection('posts', ({ data }) => !data.draft && Boolean(data.series));
+	const groups = new Map<string, { title: string; posts: CollectionEntry<'posts'>[] }>();
+	for (const post of posts) {
+		if (!post.data.series) continue;
+		const group = groups.get(post.data.series.slug) ?? { title: post.data.series.title, posts: [] };
+		group.posts.push(post);
+		groups.set(post.data.series.slug, group);
+	}
+	return Array.from(groups, ([slug, group]) => ({
+		params: { slug },
+		props: { title: group.title, posts: group.posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()) },
+	}));
+}
+
+const { title, posts } = Astro.props;
+---
+<PageLayout title={`${title}｜${SITE_TITLE}`} description={`${title}專欄的所有文章。`}>
+	<header class="page-header">
+		<p class="eyebrow">SERIES</p><h1>{title}</h1><p>共 {posts.length} 篇文章，依日期由新到舊。</p>
+		<a class="back-link" href={withBase('blog/')}>← 回到全部文章</a>
+	</header>
+	<PostList posts={posts} />
+</PageLayout>
