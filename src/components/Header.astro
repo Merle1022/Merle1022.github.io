@@ -1,0 +1,25 @@
+---
+import { SITE_TITLE, withBase } from '../consts';
+
+const links = [
+	['Home', ''],
+	['Blog', 'blog/'],
+	['Works', 'works/'],
+	['About', 'about/'],
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+	<nav class="nav container" aria-label="主要導覽">
+		<a class="brand" href={withBase()}>{SITE_TITLE}</a>
+		<div class="nav-links">
+			{links.map(([label, path]) => {
+				const href = withBase(path);
+				const isHome = path === '' && currentPath === new URL(href, Astro.site).pathname;
+				const active = isHome || (path !== '' && currentPath.startsWith(new URL(href, Astro.site).pathname));
+				return <a href={href} aria-current={active ? 'page' : undefined}>{label}</a>;
+			})}
+		</div>
+	</nav>
+</header>

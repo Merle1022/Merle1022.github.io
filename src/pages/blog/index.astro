@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<PageLayout title="Blog｜紫夜筆記" description="所有文章，依發表日期由新到舊排列。">
+	<header class="page-header"><p class="eyebrow">ARCHIVE</p><h1>Blog</h1><p>所有文章，依日期由新到舊。</p></header>
+	<PostList posts={posts} />
+</PageLayout>

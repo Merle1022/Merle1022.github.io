@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import PostList from '../components/PostList.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="hero">
+		<p class="eyebrow">WRITING · DESIGN · INTERNET</p>
+		<h1>把觀察寫下來，<br /><span>讓想法有地方生長。</span></h1>
+		<p>{SITE_DESCRIPTION}</p>
+	</section>
+	<section aria-labelledby="latest-posts">
+		<div class="section-heading">
+			<h2 id="latest-posts">最新文章</h2>
+			<p>{posts.length} 篇筆記</p>
+		</div>
+		<PostList posts={posts} />
+	</section>
+</PageLayout>

@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { works: CollectionEntry<'works'>[] }
+const { works } = Astro.props;
+---
+<div class="work-grid">
+	{works.map((work) => (
+		<article class="work-card">
+			<p class="eyebrow">{work.data.tags.join(' · ')}</p>
+			<h2>{work.data.title}</h2>
+			<p>{work.data.description}</p>
+			{work.data.url && <a href={work.data.url}>View project →</a>}
+		</article>
+	))}
+</div>

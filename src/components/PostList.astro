@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import { withBase } from '../consts';
+
+interface Props { posts: CollectionEntry<'posts'>[] }
+const { posts } = Astro.props;
+---
+<ol class="post-list">
+	{posts.map((post) => (
+		<li>
+			<a class="post-row" href={withBase(`blog/${post.id}/`)}>
+				<div>
+					<h2>{post.data.title}</h2>
+					<p>{post.data.description}</p>
+					<div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
+				</div>
+				<time datetime={post.data.date.toISOString()}><FormattedDate date={post.data.date} /></time>
+			</a>
+		</li>
+	))}
+</ol>

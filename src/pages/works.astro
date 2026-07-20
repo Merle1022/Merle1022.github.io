@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import WorkGrid from '../components/WorkGrid.astro';
+const works = (await getCollection('works')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<PageLayout title="Works｜紫夜筆記" description="作品與專案選集。">
+	<header class="page-header"><p class="eyebrow">SELECTED WORKS</p><h1>Works</h1><p>Coming soon</p></header>
+	<WorkGrid works={works} />
+</PageLayout>
