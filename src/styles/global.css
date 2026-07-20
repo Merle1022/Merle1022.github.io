@@ -53,10 +53,20 @@ h1,h2,h3 { line-height:1.22; letter-spacing:-.025em; }
 .series-card h3 { margin:.55rem 0; font-size:1.3rem; }
 .series-card p { color:var(--muted); margin:0; font-size:.84rem; }
 .article-list-heading { margin-top:1rem; }
-.work-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
-.work-card { min-height:260px; padding:1.5rem; border:1px solid var(--line); background:linear-gradient(145deg,rgba(167,139,250,.08),transparent 60%); display:flex; flex-direction:column; }
-.work-card h2 { margin:.4rem 0; }
-.work-card>p:not(.eyebrow) { color:var(--muted); }
+.work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.work-card { min-width:0; min-height:320px; padding:1.5rem; border:1px solid var(--line); background:linear-gradient(145deg,rgba(167,139,250,.08),transparent 60%); display:flex; flex-direction:column; }
+.work-card-meta { min-height:1.8rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+.work-card-meta .eyebrow { margin:0; }
+.work-status { flex:none; padding:.18rem .55rem; border:1px solid rgba(167,139,250,.5); border-radius:999px; color:#D8CBFF; background:rgba(167,139,250,.1); font-size:.7rem; font-weight:700; letter-spacing:.05em; }
+.work-card h2 { margin:.65rem 0 .4rem; font-size:clamp(1.35rem,3vw,1.75rem); }
+.work-description { min-height:3.4rem; color:var(--muted); margin:.25rem 0 1.25rem; }
+.architecture { width:100%; min-width:0; display:flex; align-items:center; gap:.45rem; padding:1rem; border:1px solid var(--line); background:rgba(15,11,30,.72); overflow-x:auto; }
+.architecture-node { flex:1 0 max-content; padding:.45rem .6rem; border:1px solid #4B3C6D; background:#1F1831; color:#EDEAF5; text-align:center; font-size:.76rem; }
+.architecture-arrow { flex:none; color:var(--accent); font-size:.9rem; }
+.work-tools { margin-top:1.15rem; padding-top:1rem; border-top:1px solid var(--line); }
+.work-tools>span { color:var(--muted); font-size:.72rem; letter-spacing:.1em; }
+.work-tools ul { display:flex; flex-wrap:wrap; gap:.4rem; list-style:none; margin:.55rem 0 0; padding:0; }
+.work-tools li { padding:.2rem .55rem; border-radius:3px; background:rgba(167,139,250,.1); color:#D7CAFF; font-size:.75rem; }
 .work-card a { color:var(--accent); margin-top:auto; text-decoration:none; }
 .empty-page { min-height:55vh; display:grid; align-content:center; }
 .article-shell { max-width:980px; }
@@ -97,5 +107,5 @@ h1,h2,h3 { line-height:1.22; letter-spacing:-.025em; }
 .prose tr:last-child td { border-bottom:0; }
 .prose th:last-child,.prose td:last-child { border-right:0; }
 .site-footer { border-top:1px solid var(--line); color:var(--muted); padding-block:1.5rem; font-size:.82rem; }
-@media(max-width:780px){.work-grid,.series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.post-row{grid-template-columns:1fr}.post-row time{grid-row:1}.nav{align-items:flex-start;flex-direction:column;gap:0;padding-top:1rem}.nav-links{width:100%;justify-content:space-between}.nav-links a{padding:.7rem 0 1rem}.site-header{position:static}.table-of-contents ol{grid-template-columns:1fr}.prose h2,.prose h3{scroll-margin-top:1rem}}
+@media(max-width:780px){.work-grid{grid-template-columns:1fr}.series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.post-row{grid-template-columns:1fr}.post-row time{grid-row:1}.nav{align-items:flex-start;flex-direction:column;gap:0;padding-top:1rem}.nav-links{width:100%;justify-content:space-between}.nav-links a{padding:.7rem 0 1rem}.site-header{position:static}.table-of-contents ol{grid-template-columns:1fr}.prose h2,.prose h3{scroll-margin-top:1rem}}
 @media(max-width:520px){.container{width:min(100% - 28px,1080px)}.work-grid,.series-grid{grid-template-columns:1fr}.hero{padding-top:1rem}.home-actions{align-items:stretch;flex-direction:column}.home-actions a{width:100%}.home-actions .text-action{width:auto;align-self:flex-start}.post-row{gap:.6rem}.table-of-contents{padding:1.15rem}.toc-heading{align-items:start;flex-direction:column-reverse;gap:.2rem}.prose table{margin-inline:-.4rem;width:calc(100% + .8rem)}.prose th,.prose td{min-width:12rem;padding:.85rem}.prose th:first-child,.prose td:first-child{min-width:9rem}}

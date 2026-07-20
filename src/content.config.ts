@@ -28,6 +28,10 @@ const works = defineCollection({
 		description: z.string(),
 		date: z.coerce.date(),
 		tags: z.array(z.string()).default([]),
+		status: z.string().optional(),
+		architecture: z.array(z.string()).default([]),
+		tools: z.array(z.string()).default([]),
+		detail: z.string().optional(),
 		url: z.string().url().optional(),
 	}),
 });
