@@ -1,4 +1,4 @@
-# 紫夜筆記
+# 梅爾 Merle
 
 以 Astro 官方 Blog template 為基礎的個人部落格與作品集，部署於 GitHub Pages。
 

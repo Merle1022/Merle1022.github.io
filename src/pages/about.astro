@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import { SITE_TITLE } from '../consts';
 ---
-<PageLayout title="About｜紫夜筆記" description="關於本站與作者。">
+<PageLayout title={`About｜${SITE_TITLE}`} description="關於梅爾 Merle。">
 	<section class="empty-page"><p class="eyebrow">ABOUT</p><h1>Coming soon</h1><p>這個頁面正在整理中。</p></section>
 </PageLayout>
