@@ -15,7 +15,7 @@ const { posts } = Astro.props;
 					<p>{post.data.description}</p>
 					<div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
 				</div>
-				<time datetime={post.data.date.toISOString()}><FormattedDate date={post.data.date} /></time>
+				<FormattedDate date={post.data.date} />
 			</a>
 		</li>
 	))}

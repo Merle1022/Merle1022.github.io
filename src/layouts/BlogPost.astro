@@ -15,7 +15,7 @@ const { title, description, date, tags } = Astro.props;
 		<main class="container article-shell">
 			<article>
 				<header class="article-header">
-					<time datetime={date.toISOString()}><FormattedDate date={date} /></time>
+					<FormattedDate date={date} />
 					<h1>{title}</h1>
 					<p>{description}</p>
 					<div class="tags">{tags.map((tag) => <span>#{tag}</span>)}</div>
