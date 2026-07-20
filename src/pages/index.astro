@@ -2,16 +2,27 @@
 import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
 import PostList from '../components/PostList.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, withBase } from '../consts';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<section class="hero">
-		<p class="eyebrow">WRITING · DESIGN · INTERNET</p>
-		<h1>把觀察寫下來，<br /><span>讓想法有地方生長。</span></h1>
-		<p>{SITE_DESCRIPTION}</p>
+	<section class="hero home-hero">
+		<p class="eyebrow">MERLE · WRITING · AI · SLOW LIVING</p>
+		<h1>把生活走過的路，<br /><span>整理成能被閱讀、使用與延伸的內容。</span></h1>
+		<p class="hero-intro">
+			我是梅爾 Merle。曾在澳洲的靈性瑜伽村生活半年，也帶著帳篷露營半年；現在寫下這些不太典型的移動經驗，以及我和 AI 一起完成的網站與數位工具。
+		</p>
+		<p class="hero-direction">
+			我也是一位素食生活者，正在從飲食與共桌的日常出發，慢慢發展餐廳媒合與一起吃飯的專案想法。
+		</p>
+		<div class="home-actions" aria-label="開始探索梅爾的網站">
+			<a class="primary-action" href={withBase('blog/')}>閱讀文章 <span aria-hidden="true">→</span></a>
+			<a class="secondary-action" href={withBase('works/')}>查看作品</a>
+			<a class="text-action" href={withBase('about/')}>關於梅爾</a>
+		</div>
+		<p class="brand-line">把觀察寫下來，讓想法有地方生長。</p>
 	</section>
 	<section aria-labelledby="latest-posts">
 		<div class="section-heading">
