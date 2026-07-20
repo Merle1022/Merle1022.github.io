@@ -6,10 +6,29 @@ const { works } = Astro.props;
 <div class="work-grid">
 	{works.map((work) => (
 		<article class="work-card">
-			<p class="eyebrow">{work.data.tags.join(' · ')}</p>
+			<div class="work-card-meta">
+				<p class="eyebrow">{work.data.tags.join(' · ')}</p>
+				{work.data.status && <span class="work-status">{work.data.status}</span>}
+			</div>
 			<h2>{work.data.title}</h2>
-			<p>{work.data.description}</p>
-			{work.data.url && <a href={work.data.url}>View project →</a>}
+			<p class="work-description">{work.data.description}</p>
+			{work.data.architecture.length > 0 && (
+				<div class="architecture" aria-label={`${work.data.title}架構示意`}>
+					{work.data.architecture.map((step, index) => (
+						<>
+							<span class="architecture-node">{step}</span>
+							{index < work.data.architecture.length - 1 && <span class="architecture-arrow" aria-hidden="true">→</span>}
+						</>
+					))}
+				</div>
+			)}
+			{work.data.tools.length > 0 && (
+				<div class="work-tools">
+					<span>使用工具</span>
+					<ul>{work.data.tools.map((tool) => <li>{tool}</li>)}</ul>
+				</div>
+			)}
+			{(work.data.detail || work.data.url) && <a href={work.data.detail || work.data.url}>View project →</a>}
 		</article>
 	))}
 </div>

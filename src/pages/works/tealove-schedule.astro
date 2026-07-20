@@ -1,0 +1,310 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const liveUrl = 'https://merle1022.github.io/tealove-schedule/';
+const sourceUrl = 'https://github.com/Merle1022/tealove-schedule';
+
+const features = [
+	{
+		index: '01',
+		title: '一週排班看板',
+		description: '用員工 × 星期的直覺網格安排班別，可切換週次並限制單一班別人數。',
+	},
+	{
+		index: '02',
+		title: '工時與薪資概覽',
+		description: '自動彙整排班人數、每週工時與預估薪資，把現場判斷集中在同一頁。',
+	},
+	{
+		index: '03',
+		title: '角色與權限分流',
+		description: '管理員與店員使用不同入口權限，店員只處理自己的排班，庫存功能留給管理端。',
+	},
+	{
+		index: '04',
+		title: '雲端資料同步',
+		description: '透過 Google Apps Script 串接試算表，讓排班與庫存資料可跨裝置讀取。',
+	},
+	{
+		index: '05',
+		title: '庫存盤點',
+		description: '集中紀錄茶葉、珍珠與糖漿等原物料數量，支援重新讀取與雲端儲存。',
+	},
+	{
+		index: '06',
+		title: 'CSV 匯出',
+		description: '將排班或庫存結果匯出成 CSV，方便後續留存、核對與交接。',
+	},
+];
+
+const stack = ['HTML', 'Tailwind CSS', 'JavaScript', 'Google Apps Script', 'Google Sheets', 'GitHub Pages'];
+
+const week = [
+	{ day: '一', date: '07.20', shifts: ['早', '晚', '—'] },
+	{ day: '二', date: '07.21', shifts: ['早', '中', '晚'] },
+	{ day: '三', date: '07.22', shifts: ['中', '晚', '—'] },
+	{ day: '四', date: '07.23', shifts: ['早', '中', '晚'] },
+	{ day: '五', date: '07.24', shifts: ['早', '晚', '—'] },
+	{ day: '六', date: '07.25', shifts: ['早', '中', '晚'] },
+	{ day: '日', date: '07.26', shifts: ['早', '中', '—'] },
+];
+---
+
+<PageLayout
+	title="鮮茶樂飲料店排班系統｜梅爾 Merle"
+	description="把飲料店每週排班、工時薪資與庫存盤點，整理成一套清楚、可協作的雲端管理介面。"
+>
+	<div class="portfolio-home">
+		<section class="hero" aria-labelledby="project-title">
+			<div class="hero-copy">
+				<p class="project-label"><span aria-hidden="true"></span> FEATURED PROJECT · 2026</p>
+				<p class="hero-note">從一張班表開始，整理店裡的日常。</p>
+				<h1 id="project-title">鮮茶樂<br /><em>飲料店排班系統</em></h1>
+				<p class="hero-lead">
+					為飲料店現場設計的輕量管理工具。把每週排班、工時薪資與庫存紀錄放進同一套流程，讓店長少一點來回確認，讓店員更快看懂自己的班。
+				</p>
+				<div class="hero-actions">
+					<a class="primary-link" href={liveUrl}>開啟線上作品 <span aria-hidden="true">↗</span></a>
+					<a class="text-link" href={sourceUrl}>查看 GitHub 原始碼 <span aria-hidden="true">→</span></a>
+				</div>
+				<dl class="hero-meta">
+					<div><dt>角色</dt><dd>產品設計・前端實作</dd></div>
+					<div><dt>類型</dt><dd>營運工具・Web App</dd></div>
+					<div><dt>狀態</dt><dd><span class="status-dot" aria-hidden="true"></span> GitHub Pages 上線中</dd></div>
+				</dl>
+			</div>
+
+			<div class="schedule-visual" aria-label="鮮茶樂一週排班介面示意">
+				<div class="visual-topbar">
+					<div><span class="brand-mark" aria-hidden="true">茶</span><strong>鮮茶樂</strong></div>
+					<span>第 30 週</span>
+				</div>
+				<div class="visual-summary">
+					<div><span>本週人數</span><strong>8<small> 人</small></strong></div>
+					<div><span>總工時</span><strong>186<small> hr</small></strong></div>
+					<div><span>排班狀態</span><strong class="ready">已完成</strong></div>
+				</div>
+				<div class="schedule-sheet">
+					<div class="employee-column">
+						<span class="column-label">員工</span>
+						<strong>雨澄</strong><strong>小安</strong><strong>阿哲</strong>
+					</div>
+					{week.map((item, dayIndex) => (
+						<div class:list={['day-column', { weekend: dayIndex > 4 }]}>
+							<div class="day-head"><span>{item.day}</span><small>{item.date}</small></div>
+							{item.shifts.map((shift, shiftIndex) => (
+								<span class:list={['shift', `shift-${shift}`, { muted: shift === '—', alternate: (dayIndex + shiftIndex) % 3 === 0 }]}>{shift}</span>
+							))}
+						</div>
+					))}
+				</div>
+				<div class="visual-footer"><span>雲端資料已同步</span><span>Google Sheets · 12:42</span></div>
+			</div>
+		</section>
+
+		<section class="intro section" aria-labelledby="intro-title">
+			<div class="section-number">01</div>
+			<div class="section-copy">
+				<p class="eyebrow">作品介紹 / ABOUT</p>
+				<h2 id="intro-title">好排班，不只是一張填滿的表。</h2>
+				<div class="intro-body">
+					<p>飲料店的班表牽動人力、薪資、尖峰時段與每天的交接。這個作品從現場最常發生的「這週誰能上班？」出發，將分散在訊息與試算表裡的資訊，整理成一個人人都能快速理解的操作介面。</p>
+					<p>我把它做成可直接從瀏覽器使用的靜態前端，再透過 Google Apps Script 與試算表交換資料；保留低維護成本，也為小型店家的協作留下足夠彈性。</p>
+				</div>
+			</div>
+			<aside class="design-quote">
+				<span>DESIGN QUESTION</span>
+				<blockquote>「怎麼讓忙碌的現場，在一眼之內知道下一步？」</blockquote>
+			</aside>
+		</section>
+
+		<section class="features section" aria-labelledby="features-title">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">核心功能 / FEATURES</p>
+					<h2 id="features-title">從排班到盤點，<br />把瑣碎變成清楚。</h2>
+				</div>
+				<p>目前公開版本包含六個<br />店務管理核心能力。</p>
+			</div>
+			<div class="feature-list">
+				{features.map((feature) => (
+					<article>
+						<span>{feature.index}</span>
+						<h3>{feature.title}</h3>
+						<p>{feature.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="stack section" aria-labelledby="stack-title">
+			<div class="stack-heading">
+				<p class="eyebrow">技術棧 / STACK</p>
+				<h2 id="stack-title">簡單的技術，<br />支撐真實的日常。</h2>
+				<p>以瀏覽器原生能力為核心，搭配容易接手的雲端服務；適合快速驗證流程，也方便逐步替換成正式後端。</p>
+			</div>
+			<ol class="stack-list">
+				{stack.map((item, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><strong>{item}</strong></li>)}
+			</ol>
+			<div class="architecture" aria-label="系統資料流程">
+				<p>DATA FLOW</p>
+				<div><span>01</span><strong>店員 / 管理員</strong><small>Browser UI</small></div>
+				<i aria-hidden="true">→</i>
+				<div><span>02</span><strong>Apps Script</strong><small>API Layer</small></div>
+				<i aria-hidden="true">→</i>
+				<div><span>03</span><strong>Google Sheets</strong><small>Cloud Data</small></div>
+			</div>
+		</section>
+
+		<section class="security section" aria-labelledby="security-title">
+			<div class="security-title">
+				<p class="eyebrow">資安限制聲明 / SECURITY</p>
+				<h2 id="security-title">公開展示，<br />也要說清楚邊界。</h2>
+			</div>
+			<div class="security-copy">
+				<p class="security-lead">這是作品展示與流程驗證版本，尚未經過獨立資安稽核，不應直接作為正式門市的人資、薪資或敏感庫存系統。</p>
+				<ul>
+					<li><span>01</span><p><strong>前端不是權限邊界</strong>GitHub Pages 為公開靜態網站；角色資訊儲存在瀏覽器端，不能取代伺服器端授權。</p></li>
+					<li><span>02</span><p><strong>請勿放入真實敏感資料</strong>公開展示時請只使用測試帳號與去識別資料，不輸入真實密碼、薪資或個資。</p></li>
+					<li><span>03</span><p><strong>正式上線需要強化</strong>正式營運應加入可靠身分驗證、伺服器端權限檢查、稽核紀錄、備份與祕密管理。</p></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="contact" aria-labelledby="contact-title">
+			<p class="eyebrow">CONTACT / LET'S WORK TOGETHER</p>
+			<div>
+				<h2 id="contact-title">你也有一套<br />想整理好的工作流程？</h2>
+				<div class="contact-action">
+					<p>我喜歡把混亂的需求，整理成清楚、好讀又能真正使用的數位工具。</p>
+					<a href="https://github.com/Merle1022">從 GitHub 找到我 <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</section>
+	</div>
+</PageLayout>
+
+<style>
+	:global(body) { background: #f4f0e7; color: #26332c; }
+	:global(main.container) { width: 100%; max-width: none; padding: 0; }
+	.portfolio-home { --paper: #f4f0e7; --paper-deep: #e8e1d3; --ink: #26332c; --muted: #667067; --tea: #315b48; --tea-light: #6f8f7f; --orange: #c66f42; --line: #cfc7b8; overflow: hidden; }
+	.hero, .section, .contact { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
+	.hero { min-height: calc(100vh - 73px); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); padding: clamp(5rem, 9vw, 8.5rem) 0; }
+	.project-label { display: flex; align-items: center; gap: .7rem; margin: 0 0 2.5rem; color: var(--tea); font-family: monospace; font-size: .7rem; letter-spacing: .16em; }
+	.project-label span { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(198,111,66,.12); }
+	.hero-note { margin: 0 0 .65rem; color: var(--orange); font-family: serif; font-size: clamp(1rem, 1.5vw, 1.25rem); letter-spacing: .08em; }
+	.hero h1 { margin: 0; color: var(--ink); font-size: clamp(3.4rem, 7vw, 6.75rem); line-height: .98; letter-spacing: -.07em; }
+	.hero h1 em { display: block; margin-top: .55rem; color: var(--tea); font-family: serif; font-size: .49em; font-style: normal; font-weight: 500; letter-spacing: .04em; }
+	.hero-lead { max-width: 39rem; margin: 2rem 0 0; color: #5d685f; font-size: clamp(1rem, 1.35vw, 1.12rem); line-height: 2; }
+	.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.3rem; }
+	.primary-link { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; min-height: 3.5rem; padding: .75rem 1.4rem; background: var(--tea); color: #fffaf0; text-decoration: none; transition: transform .2s, background .2s; }
+	.primary-link:hover { background: #244937; transform: translateY(-3px); }
+	.text-link { color: var(--ink); text-underline-offset: .35rem; text-decoration-color: #a59d90; }
+	.text-link:hover { color: var(--orange); }
+	.hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 3.4rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+	.hero-meta div { min-width: 0; }
+	.hero-meta dt { color: #8b8f87; font-family: monospace; font-size: .63rem; letter-spacing: .1em; }
+	.hero-meta dd { margin: .4rem 0 0; color: #49564d; font-size: .77rem; }
+	.status-dot { display: inline-block; width: 6px; height: 6px; margin-right: .35rem; border-radius: 50%; background: #4d9369; }
+	.schedule-visual { position: relative; min-width: 0; padding: clamp(1.15rem, 2.2vw, 2rem); background: #fffdf7; border: 1px solid #d8d0c1; box-shadow: 0 40px 90px rgba(55,65,56,.16); transform: rotate(1.15deg); }
+	.schedule-visual::before { content: 'WEEKLY\A SCHEDULE'; white-space: pre; position: absolute; right: -2.4rem; top: 4.5rem; color: rgba(49,91,72,.11); font: 700 clamp(3rem, 7vw, 6rem)/.8 sans-serif; letter-spacing: -.08em; writing-mode: vertical-rl; z-index: -1; }
+	.visual-topbar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid #dfd8cb; }
+	.visual-topbar > div { display: flex; align-items: center; gap: .65rem; }
+	.brand-mark { width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 50%; background: var(--tea); color: #fff; font-family: serif; font-size: .83rem; }
+	.visual-topbar strong { color: var(--tea); letter-spacing: .08em; }
+	.visual-topbar > span { padding: .3rem .55rem; background: #edf1eb; color: #657268; font-family: monospace; font-size: .65rem; }
+	.visual-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin: 1rem 0; }
+	.visual-summary div { padding: .9rem; background: #f3f0e8; }
+	.visual-summary span { display: block; margin-bottom: .25rem; color: #7c837c; font-size: .58rem; }
+	.visual-summary strong { color: var(--ink); font-size: 1.2rem; }
+	.visual-summary small { font-size: .57rem; font-weight: 400; }
+	.visual-summary .ready { color: var(--tea); font-size: .75rem; }
+	.schedule-sheet { display: grid; grid-template-columns: 1.15fr repeat(7, 1fr); border-top: 1px solid #d8d1c4; border-left: 1px solid #d8d1c4; overflow-x: auto; }
+	.employee-column, .day-column { min-width: 48px; display: grid; grid-template-rows: 3rem repeat(3, 3.8rem); }
+	.employee-column > *, .day-column > * { display: grid; place-items: center; border-right: 1px solid #d8d1c4; border-bottom: 1px solid #d8d1c4; }
+	.employee-column strong { color: #59645c; font-size: .63rem; font-weight: 500; }
+	.column-label { color: #8b8f87; font-size: .58rem; }
+	.day-head { align-content: center; gap: 0; color: var(--ink); font-size: .72rem; font-weight: 700; }
+	.day-head small { color: #96988f; font-size: .48rem; font-weight: 400; }
+	.weekend .day-head { background: #f5eee6; color: var(--orange); }
+	.shift { width: 1.65rem; height: 1.65rem; place-self: center; border-radius: 50%; background: #dce8df; color: var(--tea); font-size: .56rem; font-weight: 700; }
+	.shift.alternate { background: #f3dfd2; color: #a75931; }
+	.shift-中 { border-radius: 4px; background: #e5e1cd; color: #786e47; }
+	.shift.muted { background: none; color: #c4c1b8; font-weight: 400; }
+	.visual-footer { display: flex; justify-content: space-between; padding-top: .9rem; color: #92958d; font-family: monospace; font-size: .52rem; }
+	.section { padding: clamp(6rem, 11vw, 10rem) 0; border-top: 1px solid var(--line); }
+	.eyebrow { margin: 0 0 1.2rem; color: var(--orange) !important; font-family: monospace; font-size: .68rem !important; letter-spacing: .17em; }
+	.section h2, .contact h2 { margin: 0; color: var(--ink); font-family: serif; font-size: clamp(2.5rem, 5.2vw, 5rem); font-weight: 500; line-height: 1.23; letter-spacing: -.045em; }
+	.intro { display: grid; grid-template-columns: .35fr 2fr .85fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+	.section-number { color: #aaa79d; font-family: serif; font-size: 1.6rem; }
+	.intro-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+	.intro-body p { margin: 0; color: var(--muted); line-height: 2; }
+	.design-quote { margin-top: 3.1rem; padding: 1.4rem 0; border-top: 2px solid var(--tea); border-bottom: 1px solid var(--line); }
+	.design-quote span { color: #93968f; font-family: monospace; font-size: .58rem; letter-spacing: .13em; }
+	.design-quote blockquote { margin: 1rem 0 0; color: var(--tea); font-family: serif; font-size: 1.2rem; line-height: 1.8; }
+	.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 3rem; margin-bottom: 4rem; }
+	.section-heading > p { color: #8b8d86; font-size: .75rem; line-height: 1.8; text-align: right; }
+	.feature-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+	.feature-list article { min-height: 245px; padding: 1.5rem 1.2rem 1.8rem; border-bottom: 1px solid var(--line); }
+	.feature-list article:not(:nth-child(3n + 1)) { border-left: 1px solid var(--line); }
+	.feature-list article > span { color: var(--orange); font-family: monospace; font-size: .65rem; }
+	.feature-list h3 { margin: 3rem 0 .8rem; color: var(--ink); font-family: serif; font-size: 1.5rem; font-weight: 500; }
+	.feature-list p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.8; }
+	.stack { display: grid; grid-template-columns: 1fr .7fr 1fr; gap: clamp(3rem, 7vw, 7rem); align-items: center; }
+	.stack-heading > p:last-child { max-width: 31rem; margin: 1.8rem 0 0; color: var(--muted); line-height: 1.9; }
+	.stack-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+	.stack-list li { display: flex; align-items: center; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+	.stack-list span { color: var(--orange); font: .62rem monospace; }
+	.stack-list strong { color: #435048; font-size: .83rem; }
+	.architecture { padding: 1.5rem; background: var(--tea); color: #f7f2e8; box-shadow: 18px 18px 0 #d9d2c4; }
+	.architecture > p { margin: 0 0 1.4rem; color: #a9c0b3; font: .6rem monospace; letter-spacing: .13em; }
+	.architecture div { display: grid; grid-template-columns: 1.7rem 1fr; gap: .1rem .8rem; padding: .9rem; border: 1px solid rgba(255,255,255,.2); }
+	.architecture div span { grid-row: 1 / 3; color: #dca17e; font: .63rem monospace; }
+	.architecture div strong { font-size: .8rem; }
+	.architecture div small { color: #a9c0b3; font: .54rem monospace; }
+	.architecture > i { height: 2.3rem; display: grid; place-items: center; color: #dca17e; font-style: normal; transform: rotate(90deg); }
+	.security { display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+	.security-title { position: sticky; top: 7rem; }
+	.security-lead { margin: 0 0 2.5rem; color: #4d5a51; font-family: serif; font-size: 1.25rem; line-height: 1.85; }
+	.security-copy ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+	.security-copy li { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+	.security-copy li > span { color: var(--orange); font: .65rem monospace; }
+	.security-copy li p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.8; }
+	.security-copy li strong { display: block; margin-bottom: .25rem; color: var(--ink); font-size: .95rem; }
+	.contact { margin-bottom: clamp(3rem, 7vw, 6rem); padding: clamp(3rem, 7vw, 6rem); background: var(--tea); color: #f4f0e7; }
+	.contact .eyebrow { color: #e2a580 !important; }
+	.contact > div { display: grid; grid-template-columns: 1.4fr .6fr; gap: 4rem; align-items: end; }
+	.contact h2 { color: #fffaf0; }
+	.contact-action p { margin: 0 0 2rem; color: #b9c8c0; line-height: 1.9; }
+	.contact-action a { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-top: 1px solid #97aa9e; border-bottom: 1px solid #97aa9e; color: #fffaf0; text-decoration: none; }
+	.contact-action a:hover { color: #edb290; }
+	@media (max-width: 960px) {
+		.hero { grid-template-columns: 1fr; }
+		.schedule-visual { width: min(100%, 650px); justify-self: center; }
+		.intro { grid-template-columns: .2fr 1.8fr; }
+		.design-quote { grid-column: 2; margin-top: 0; }
+		.stack { grid-template-columns: 1fr 1fr; }
+		.architecture { grid-column: 1 / 3; }
+		.contact > div { grid-template-columns: 1fr; }
+	}
+	@media (max-width: 700px) {
+		.hero, .section, .contact { width: min(100% - 28px, 1200px); }
+		.hero { padding-top: 4rem; }
+		.hero-meta, .intro-body { grid-template-columns: 1fr; }
+		.schedule-visual { padding: .85rem; transform: none; overflow-x: auto; }
+		.visual-summary { min-width: 460px; }
+		.schedule-sheet { min-width: 600px; }
+		.visual-footer { min-width: 460px; }
+		.intro, .security, .stack { grid-template-columns: 1fr; }
+		.section-number { display: none; }
+		.design-quote, .architecture { grid-column: 1; }
+		.section-heading { align-items: start; flex-direction: column; }
+		.section-heading > p { text-align: left; }
+		.feature-list { grid-template-columns: 1fr; }
+		.feature-list article:not(:nth-child(3n + 1)) { border-left: 0; }
+		.feature-list article { min-height: 210px; }
+		.security-title { position: static; }
+		.contact { padding: 2.5rem 1.5rem; }
+	}
+	@media (prefers-reduced-motion: reduce) { .primary-link { transition: none; } }
+</style>
