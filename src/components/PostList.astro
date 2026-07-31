@@ -2,21 +2,44 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { withBase } from '../consts';
+import coverOne from '../assets/blog-placeholder-1.jpg';
+import coverTwo from '../assets/blog-placeholder-4.jpg';
+import coverThree from '../assets/blog-placeholder-5.jpg';
 
-interface Props { posts: CollectionEntry<'posts'>[] }
-const { posts } = Astro.props;
+interface Props { posts: CollectionEntry<'posts'>[]; variant?: 'rows' | 'cards' }
+const { posts, variant = 'rows' } = Astro.props;
+const covers = [coverOne, coverTwo, coverThree];
 ---
-<ol class="post-list">
-	{posts.map((post) => (
+<ol class:list={['post-list', { 'post-card-grid': variant === 'cards' }]}>
+	{posts.map((post, index) => (
 		<li>
-			<a class="post-row" href={withBase(`blog/${post.id}/`)}>
-				<div>
-					<h2>{post.data.title}</h2>
-					<p>{post.data.description}</p>
-					<div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
-				</div>
-				<FormattedDate date={post.data.date} />
-			</a>
+			{variant === 'cards' ? (
+				<article class="post-card" data-post-card data-tags={post.data.tags.join('|')}>
+					<a class="post-card-link" href={withBase(`blog/${post.id}/`)}>
+						<div class="post-card-cover">
+							<img src={covers[index % covers.length].src} alt="" loading="lazy" />
+						</div>
+						<div class="post-card-content">
+							<p class="post-card-category">{post.data.tags[0] ?? '筆記'}</p>
+							<h2>{post.data.title}</h2>
+							<p>{post.data.description}</p>
+							<footer>
+								<FormattedDate date={post.data.date} />
+								<span>繼續閱讀 <b aria-hidden="true">→</b></span>
+							</footer>
+						</div>
+					</a>
+				</article>
+			) : (
+				<a class="post-row" href={withBase(`blog/${post.id}/`)}>
+					<div>
+						<h2>{post.data.title}</h2>
+						<p>{post.data.description}</p>
+						<div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
+					</div>
+					<FormattedDate date={post.data.date} />
+				</a>
+			)}
 		</li>
 	))}
 </ol>

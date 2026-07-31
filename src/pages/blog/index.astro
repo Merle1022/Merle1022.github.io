@@ -18,6 +18,7 @@ const series = Array.from(
 		return items;
 	}, new Map<string, { title: string; slug: string; count: number }>()).values(),
 );
+const tags = Array.from(new Set(posts.flatMap((post) => post.data.tags)));
 ---
 <PageLayout title={`Blog｜${SITE_TITLE}`} description="所有文章，依發表日期由新到舊排列。">
 	<header class="page-header"><p class="eyebrow">ARCHIVE</p><h1>Blog</h1><p>所有文章，依日期由新到舊。</p></header>
@@ -33,6 +34,32 @@ const series = Array.from(
 			</div>
 		</section>
 	)}
-	<div class="section-heading article-list-heading"><h2>全部文章</h2><p>{posts.length} 篇</p></div>
-	<PostList posts={posts} />
+	<section class="article-archive" aria-labelledby="all-posts-title">
+		<div class="section-heading article-list-heading"><h2 id="all-posts-title">全部文章</h2><p>{posts.length} 篇</p></div>
+		<div class="filter-chips" aria-label="依主題篩選文章">
+			<button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">全部文章</button>
+			{tags.map((tag) => <button type="button" class="filter-chip" data-filter={tag} aria-pressed="false">{tag}</button>)}
+		</div>
+		<PostList posts={posts} variant="cards" />
+	</section>
 </PageLayout>
+
+<script>
+	const filters = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+	const cards = document.querySelectorAll<HTMLElement>('[data-post-card]');
+
+	filters.forEach((filter) => {
+		filter.addEventListener('click', () => {
+			const selected = filter.dataset.filter;
+			filters.forEach((item) => {
+				const active = item === filter;
+				item.classList.toggle('is-active', active);
+				item.setAttribute('aria-pressed', String(active));
+			});
+			cards.forEach((card) => {
+				const matches = selected === 'all' || card.dataset.tags?.split('|').includes(selected ?? '');
+				card.hidden = !matches;
+			});
+		});
+	});
+</script>

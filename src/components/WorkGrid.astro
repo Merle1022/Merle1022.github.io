@@ -1,14 +1,21 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import coverOne from '../assets/blog-placeholder-2.jpg';
+import coverTwo from '../assets/blog-placeholder-3.jpg';
+import coverThree from '../assets/blog-placeholder-about.jpg';
 interface Props { works: CollectionEntry<'works'>[] }
 const { works } = Astro.props;
+const covers = [coverOne, coverTwo, coverThree];
 ---
 <div class="work-grid">
-	{works.map((work) => (
+	{works.map((work, index) => (
 		<article class="work-card">
+			<div class="work-card-cover">
+				<img src={covers[index % covers.length].src} alt="" loading="lazy" />
+				{work.data.status && <span class="work-status">{work.data.status}</span>}
+			</div>
 			<div class="work-card-meta">
 				<p class="eyebrow">{work.data.tags.join(' · ')}</p>
-				{work.data.status && <span class="work-status">{work.data.status}</span>}
 			</div>
 			<h2>{work.data.title}</h2>
 			<p class="work-description">{work.data.description}</p>
@@ -28,7 +35,7 @@ const { works } = Astro.props;
 					<ul>{work.data.tools.map((tool) => <li>{tool}</li>)}</ul>
 				</div>
 			)}
-			{(work.data.detail || work.data.url) && <a href={work.data.detail || work.data.url}>View project →</a>}
+			{(work.data.detail || work.data.url) && <a class="work-card-link" href={work.data.detail || work.data.url}>查看作品 <span aria-hidden="true">→</span></a>}
 		</article>
 	))}
 </div>
