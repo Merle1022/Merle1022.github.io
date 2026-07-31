@@ -2,7 +2,6 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-interface Props { title: string; description: string }
 interface Props { title: string; description: string; isHome?: boolean }
 const { title, description, isHome = false } = Astro.props;
 ---
@@ -13,6 +12,9 @@ const { title, description, isHome = false } = Astro.props;
 		<slot name="head" />
 	</head>
 	<body class:list={{ 'home-page': isHome }}>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXCJ92X8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
 		<Header />
 		<main class:list={['container', { 'home-main': isHome }]}><slot /></main>
 		<Footer />
