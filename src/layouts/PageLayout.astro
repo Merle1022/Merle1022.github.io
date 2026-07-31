@@ -3,7 +3,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 interface Props { title: string; description: string }
-const { title, description } = Astro.props;
+interface Props { title: string; description: string; isHome?: boolean }
+const { title, description, isHome = false } = Astro.props;
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -11,9 +12,9 @@ const { title, description } = Astro.props;
 		<BaseHead title={title} description={description} />
 		<slot name="head" />
 	</head>
-	<body>
+	<body class:list={{ 'home-page': isHome }}>
 		<Header />
-		<main class="container"><slot /></main>
+		<main class:list={['container', { 'home-main': isHome }]}><slot /></main>
 		<Footer />
 	</body>
 </html>
