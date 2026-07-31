@@ -7,7 +7,10 @@ const { title, description } = Astro.props;
 ---
 <!doctype html>
 <html lang="zh-Hant">
-	<head><BaseHead title={title} description={description} /></head>
+	<head>
+		<BaseHead title={title} description={description} />
+		<slot name="head" />
+	</head>
 	<body>
 		<Header />
 		<main class="container"><slot /></main>

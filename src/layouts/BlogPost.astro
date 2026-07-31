@@ -14,11 +14,22 @@ const articleSchema = {
 	'@type': 'BlogPosting',
 	headline: title,
 	description,
+	url: canonicalURL.href,
 	datePublished: date.toISOString(),
 	dateModified: (updatedDate ?? date).toISOString(),
-	author: { '@type': 'Person', name: author },
-	mainEntityOfPage: canonicalURL.href,
+	author: {
+		'@type': 'Person',
+		name: author,
+		url: new URL('/', Astro.site).href,
+	},
+	publisher: {
+		'@type': 'Person',
+		name: '梅爾 Merle',
+		url: new URL('/', Astro.site).href,
+	},
+	mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL.href },
 	keywords: tags.join(', '),
+	inLanguage: 'zh-Hant',
 };
 ---
 <!doctype html>
@@ -39,6 +50,10 @@ const articleSchema = {
 					{series && <a class="series-link" href={withBase(`blog/series/${series.slug}/`)}>專欄：{series.title}</a>}
 					<div class="tags">{tags.map((tag) => <span>#{tag}</span>)}</div>
 				</header>
+				<aside class="tldr-box" aria-label="文章快速摘要">
+					<strong>💡 快速摘要 (TL;DR)</strong>
+					<p>{description}</p>
+				</aside>
 				{affiliateDisclosure && (
 					<aside class="affiliate-disclosure" aria-label="聯盟行銷揭露">
 						<strong>聯盟行銷揭露</strong>
@@ -52,3 +67,17 @@ const articleSchema = {
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.tldr-box {
+		margin: 1.5rem 0;
+		padding: 1.25rem 1.5rem;
+		border-left: 4px solid var(--accent, #0f766e);
+		border-radius: 0.5rem;
+		background: #f0fdfa;
+	}
+
+	.tldr-box p {
+		margin: 0.5rem 0 0;
+	}
+</style>

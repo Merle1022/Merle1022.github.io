@@ -6,8 +6,26 @@ import { SITE_DESCRIPTION, SITE_TITLE, withBase } from '../consts';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: '梅爾 Merle',
+	alternateName: 'Merle',
+	url: new URL('/', Astro.site).href,
+	jobTitle: 'Content Creator & AI Collaborator',
+	knowsAbout: [
+		'Artificial Intelligence',
+		'Prompt Engineering',
+		'Astro Framework',
+		'GitHub Pages',
+		'Plant-based Lifestyle',
+	],
+	description: '整理生活體驗、AI 職場協作流程與數位工具開發，並推廣素食共桌生活專案。',
+};
 ---
 <PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<script slot="head" type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 	<section class="hero home-hero">
 		<p class="eyebrow">MERLE · WRITING · AI · SLOW LIVING</p>
 		<h1>把生活走過的路，<br /><span>整理成能被閱讀、使用與延伸的內容。</span></h1>
