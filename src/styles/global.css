@@ -118,6 +118,8 @@ body { background:var(--bg); color:var(--text); font-family:'Noto Sans TC',syste
 .nav { min-height:76px; }
 .brand { display:flex; flex-direction:column; gap:.05rem; color:#111; font-size:1.05rem; font-weight:900; letter-spacing:.13em; line-height:1; }
 .brand small { color:#777; font-size:.52rem; font-weight:700; letter-spacing:.11em; }
+.brand { display:block; width:4.2rem; flex:none; line-height:0; }
+.brand-logo { display:block; width:100%; height:auto; }
 .nav-links { gap:.4rem; }
 .nav-links a { color:#111; padding:.34rem .55rem; border:1px solid #111; font-size:.73rem; font-weight:800; letter-spacing:.03em; line-height:1; }
 .nav-links a:hover,.nav-links a[aria-current='page'] { border-color:#111; background:var(--accent); color:#111; }
@@ -126,6 +128,7 @@ main.container { min-height:calc(100vh - 132px); padding-block:clamp(3rem,7vw,7r
 .home-page { background:#111; }
 .home-page .site-header { position:absolute; top:0; left:0; width:100%; z-index:10; background:transparent; }
 .home-page .brand,.home-page .brand small,.home-page .nav-links a { color:#fff; }
+.home-page .brand { padding:.2rem; background:#fff; }
 .home-page .nav-links a { border-color:#fff; background:rgba(0,0,0,.14); }
 .home-page .nav-links a:hover,.home-page .nav-links a[aria-current='page'] { background:var(--accent); border-color:var(--accent); color:#111; }
 .home-main.container { width:100%; max-width:none; margin:0; padding:0; }
@@ -176,7 +179,7 @@ main.container { min-height:calc(100vh - 132px); padding-block:clamp(3rem,7vw,7r
 .prose tbody tr:nth-child(even) td,.prose tbody tr:hover td { background:#f1f0eb; }
 .prose td:first-child { color:#111; }
 .tldr-box { border-left-color:#111; background:#fff5bd; }
-@media(max-width:780px){.home-page .site-header{position:relative;background:#111}.home-hero{min-height:680px}.hero-content{grid-template-columns:1fr;gap:1.5rem}.home-hero .eyebrow{grid-column:auto}.hero-note{max-width:360px}.home-hero h1{font-size:clamp(4rem,15vw,7rem)}.nav{align-items:center;flex-direction:row;padding:0}.nav-links{width:auto;justify-content:flex-end}.nav-links a{padding:.32rem}.brand small{display:none}}
+@media(max-width:780px){.home-page .site-header{position:relative;background:#111}.home-hero{min-height:680px}.hero-content{grid-template-columns:1fr;gap:1.5rem}.home-hero .eyebrow{grid-column:auto}.hero-note{max-width:360px}.home-hero h1{font-size:clamp(4rem,15vw,7rem)}.nav{align-items:center;flex-direction:row;padding:0}.nav-links{width:auto;justify-content:flex-end}.nav-links a{padding:.32rem}}
 @media(max-width:520px){.nav{min-height:64px}.nav-links{gap:.22rem}.nav-links a{font-size:.62rem;padding:.28rem}.home-hero{min-height:620px;padding:4rem 1.25rem 2rem}.hero-art{grid-template-columns:42% 58%}.hero-art-panel-three{display:none}.latest-posts{width:min(100% - 28px,1120px)}.section-heading{grid-template-columns:1fr}.section-heading h2{font-size:2.5rem}}
 
 /* Archive cards and hover interactions. */

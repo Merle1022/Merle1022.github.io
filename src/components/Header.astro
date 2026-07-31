@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE, withBase } from '../consts';
+import merleLogo from '../assets/merle-logo.png';
 
 const links = [
 	['Home', ''],
@@ -12,7 +13,9 @@ const currentPath = Astro.url.pathname;
 
 <header class="site-header">
 	<nav class="nav container" aria-label="主要導覽">
-		<a class="brand" href={withBase()}><span>MERLE</span><small>WRITING · AI · SLOW LIVING</small></a>
+		<a class="brand" href={withBase()} aria-label={SITE_TITLE}>
+			<img class="brand-logo" src={merleLogo.src} alt="Merle" width="638" height="667" />
+		</a>
 		<div class="nav-links">
 			{links.map(([label, path]) => {
 				const href = withBase(path);
