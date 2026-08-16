@@ -2,6 +2,15 @@
 import '../styles/global.css';
 import { SITE_TITLE, withBase } from '../consts';
 
+const sitePersonSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	'@id': `${new URL(withBase('about/'), Astro.site).href}#merle`,
+	name: '梅爾 Merle',
+	url: new URL(withBase('about/'), Astro.site).href,
+	sameAs: ['https://github.com/Merle1022', 'https://instagram.com/merle__188'],
+};
+
 interface Props {
 	title: string;
 	description: string;
@@ -64,3 +73,4 @@ const ogImage = new URL(withBase('og.svg'), Astro.site);
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+{type === 'website' && <script type="application/ld+json" set:html={JSON.stringify(sitePersonSchema)} />}

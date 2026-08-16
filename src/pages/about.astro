@@ -1,7 +1,81 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, withBase } from '../consts';
+
+const profileURL = new URL('/about/', Astro.site);
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'ProfilePage',
+			url: profileURL.href,
+			mainEntity: { '@id': `${profileURL.href}#merle` },
+		},
+		{
+			'@type': 'Person',
+			'@id': `${profileURL.href}#merle`,
+			url: profileURL.href,
+			name: '梅爾 Merle',
+			alternateName: 'Merle',
+			jobTitle: '內容創作者與 AI 協作實作者',
+			description: '分享 AI 協作實務、Astro 靜態網站製作、個人數位工具與素食慢生活的內容創作者。',
+			sameAs: ['https://github.com/Merle1022', 'https://instagram.com/merle__188'],
+			knowsAbout: ['AI 協作', '內容創作', 'Astro', 'GitHub Pages', '數位工具', '素食生活'],
+		},
+	],
+};
 ---
-<PageLayout title={`About｜${SITE_TITLE}`} description="關於梅爾 Merle。">
-	<section class="empty-page"><p class="eyebrow">ABOUT</p><h1>Coming soon</h1><p>這個頁面正在整理中。</p></section>
+
+<PageLayout title={`About｜${SITE_TITLE}`} description="關於梅爾 Merle：AI 協作、靜態網站製作、數位工具與素食慢生活的內容創作者。">
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+	</Fragment>
+	<section class="profile-page">
+		<p class="eyebrow">ABOUT THE AUTHOR</p>
+		<h1>梅爾 Merle</h1>
+		<p class="profile-intro">我把親身做過、踩過坑、重新整理過的流程寫下來，讓 AI、網站與生活裡的複雜問題，變成可以被理解與實際使用的內容。</p>
+
+		<div class="profile-grid">
+			<section>
+				<h2>我在寫什麼</h2>
+				<ul>
+					<li><strong>AI 協作實務：</strong>把模糊需求拆清楚、確認理解，再做出能用的成果。</li>
+					<li><strong>網站與數位工具：</strong>用 Astro、GitHub Pages 與 AI 協作建立低維護、可長期累積的網站。</li>
+					<li><strong>慢生活與個人觀察：</strong>記錄移動、素食與生活中真正影響選擇的細節。</li>
+				</ul>
+			</section>
+			<section>
+				<h2>我的內容原則</h2>
+				<p>我會區分親身經驗、實作結果與外部資料；涉及工具規格、價格或規則的內容，會盡可能附上官方來源，並在有實質修改時留下更新紀錄。</p>
+				<p><a href={withBase('editorial-policy/')}>閱讀完整編輯原則 →</a></p>
+			</section>
+		</div>
+
+		<section class="profile-contact">
+			<h2>公開連結與聯絡</h2>
+			<p>想了解網站或作品的製作過程，歡迎透過公開帳號聯絡。</p>
+			<div class="profile-links">
+				<a href="https://github.com/Merle1022" rel="me external">GitHub ↗</a>
+				<a href="https://instagram.com/merle__188" rel="me external">Instagram ↗</a>
+			</div>
+		</section>
+	</section>
 </PageLayout>
+
+<style>
+	.profile-page { max-width: 860px; }
+	.profile-page h1 { margin:.25rem 0 1.25rem; font-size:clamp(3rem,8vw,6rem); letter-spacing:-.07em; }
+	.profile-intro { max-width:720px; margin:0 0 3rem; font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.9; }
+	.profile-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; border:1px solid var(--line); background:var(--line); }
+	.profile-grid section,.profile-contact { padding:1.6rem; background:var(--surface); }
+	.profile-grid h2,.profile-contact h2 { margin:0 0 .9rem; font-size:1.35rem; }
+	.profile-grid p,.profile-grid li,.profile-contact p { color:var(--muted); }
+	.profile-grid ul { margin:0; padding-left:1.2rem; }
+	.profile-grid li + li { margin-top:.75rem; }
+	.profile-grid strong { color:var(--text); }
+	.profile-contact { margin-top:2rem; border:1px solid var(--line); }
+	.profile-links { display:flex; flex-wrap:wrap; gap:.7rem; }
+	.profile-links a { padding:.55rem .8rem; border:1px solid var(--text); color:var(--text); font-weight:700; text-decoration:none; }
+	.profile-links a:hover { background:var(--accent); }
+	@media(max-width:680px) { .profile-grid { grid-template-columns:1fr; } }
+</style>

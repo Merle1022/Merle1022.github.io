@@ -8,6 +8,14 @@ const posts = defineCollection({
 		description: z.string(),
 		date: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
+		updates: z
+			.array(
+				z.object({
+					date: z.coerce.date(),
+					summary: z.string().min(1),
+				}),
+			)
+			.default([]),
 		author: z.string().default('梅爾 Merle'),
 		tags: z.array(z.string()).default([]),
 		series: z

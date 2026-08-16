@@ -1,0 +1,27 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<PageLayout title={`隱私權｜${SITE_TITLE}`} description="梅爾 Merle 個人網站的 Analytics 與隱私權說明。">
+	<section class="policy-page prose">
+		<p class="eyebrow">PRIVACY</p>
+		<h1>隱私權說明</h1>
+		<p>本網站使用 Google Tag Manager 與 Google Analytics 4 了解網站的使用情況，例如瀏覽頁面、停留時間、裝置類型與流量來源。這些資料用於改善內容與網站體驗。</p>
+
+		<h2>我們不主動蒐集的資料</h2>
+		<p>本網站沒有會員系統、付款功能或表單資料庫；請不要透過公開連結提供密碼、身分證件或其他敏感個人資訊。</p>
+
+		<h2>第三方服務</h2>
+		<p>Google 的服務可能依其設定使用 Cookie 或類似技術。你可以在瀏覽器中管理或刪除 Cookie，也可參考 <a href="https://policies.google.com/privacy" rel="external">Google 隱私權政策</a> 了解 Google 如何處理資料。</p>
+
+		<h2>本頁更新</h2>
+		<p>當分析工具或資料使用方式有實質改變時，這份說明會一併更新。</p>
+	</section>
+</PageLayout>
+
+<style>
+	.policy-page { max-width:760px; margin:0 auto; }
+	.policy-page h1 { font-size:clamp(2.8rem,7vw,5.5rem); margin:.25rem 0 1.5rem; }
+	.policy-page h2 { margin-top:2.5rem; }
+</style>

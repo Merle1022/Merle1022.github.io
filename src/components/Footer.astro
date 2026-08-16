@@ -1,6 +1,11 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, withBase } from '../consts';
 ---
 <footer class="site-footer container">
 	<p>© {new Date().getFullYear()} {SITE_TITLE}</p>
+	<nav aria-label="頁尾導覽">
+		<a href={withBase('about/')}>關於梅爾</a>
+		<a href={withBase('editorial-policy/')}>編輯原則</a>
+		<a href={withBase('privacy/')}>隱私權</a>
+	</nav>
 </footer>

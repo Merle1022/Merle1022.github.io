@@ -6,9 +6,11 @@ import Header from '../components/Header.astro';
 import { SITE_TITLE, withBase } from '../consts';
 
 interface Series { title: string; slug: string }
-interface Props { title: string; description: string; date: Date; updatedDate?: Date; author: string; tags: string[]; series?: Series; affiliateDisclosure?: boolean }
-const { title, description, date, updatedDate, author, tags, series, affiliateDisclosure = false } = Astro.props;
+interface Update { date: Date; summary: string }
+interface Props { title: string; description: string; date: Date; updatedDate?: Date; updates?: Update[]; author: string; tags: string[]; series?: Series; affiliateDisclosure?: boolean }
+const { title, description, date, updatedDate, updates = [], author, tags, series, affiliateDisclosure = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const authorURL = new URL(withBase('about/'), Astro.site);
 const articleSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'BlogPosting',
@@ -20,7 +22,7 @@ const articleSchema = {
 	author: {
 		'@type': 'Person',
 		name: author,
-		url: new URL('/', Astro.site).href,
+		url: authorURL.href,
 	},
 	publisher: {
 		'@type': 'Person',
@@ -47,9 +49,12 @@ const articleSchema = {
 			<article>
 				<header class="article-header">
 					<FormattedDate date={date} />
+					{updatedDate && updatedDate.getTime() > date.getTime() && (
+						<p class="article-updated">最後更新：<FormattedDate date={updatedDate} /></p>
+					)}
 					<h1>{title}</h1>
 					<p>{description}</p>
-					<p class="article-byline">作者：{author}</p>
+					<p class="article-byline">作者：<a href={withBase('about/')}>{author}</a></p>
 					{series && <a class="series-link" href={withBase(`blog/series/${series.slug}/`)}>專欄：{series.title}</a>}
 					<div class="tags">{tags.map((tag) => <span>#{tag}</span>)}</div>
 				</header>
@@ -65,6 +70,14 @@ const articleSchema = {
 				)}
 				<slot name="toc" />
 				<div class="prose"><slot /></div>
+				{updates.length > 0 && (
+					<section class="update-log" aria-labelledby="update-log-title">
+						<h2 id="update-log-title">更新紀錄</h2>
+						<ul>
+							{updates.map((update) => <li><FormattedDate date={update.date} />：{update.summary}</li>)}
+						</ul>
+					</section>
+				)}
 			</article>
 		</main>
 		<Footer />
@@ -83,4 +96,11 @@ const articleSchema = {
 	.tldr-box p {
 		margin: 0.5rem 0 0;
 	}
+
+	.article-updated { margin-top: .35rem; font-size: .84rem; }
+	.article-byline a { text-underline-offset: .16em; }
+	.update-log { width:min(100%,760px); margin:3rem auto 0; padding:1.25rem 1.5rem; border-top:2px solid var(--text); background:var(--surface); }
+	.update-log h2 { margin:0 0 .65rem; font-size:1.1rem; }
+	.update-log ul { margin:0; padding-left:1.2rem; }
+	.update-log li { margin:.35rem 0; color:var(--muted); }
 </style>
