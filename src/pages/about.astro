@@ -19,7 +19,11 @@ const personSchema = {
 			alternateName: 'Merle',
 			jobTitle: '內容創作者與 AI 協作實作者',
 			description: '分享 AI 協作實務、Astro 靜態網站製作、個人數位工具與素食慢生活的內容創作者。',
-			sameAs: ['https://github.com/Merle1022', 'https://instagram.com/merle__188'],
+			sameAs: [
+				'https://github.com/Merle1022',
+				'https://instagram.com/merle__188',
+				'https://youth.kcg.gov.tw/News_Content.aspx?n=288&s=11311&sms=10300',
+			],
 			knowsAbout: ['AI 協作', '內容創作', 'Astro', 'GitHub Pages', '數位工具', '素食生活'],
 		},
 	],
@@ -51,6 +55,13 @@ const personSchema = {
 			</section>
 		</div>
 
+		<section class="profile-proof">
+			<p class="eyebrow">PUBLIC PROFILE</p>
+			<h2>公開經歷與外部佐證</h2>
+			<p>高雄市政府青年局的新媒體人才培育專區曾公開介紹我的學習與行銷經驗；頁面列有「新媒體行銷管理師認證考試及格」及「第四屆行銷大師養成計畫學員」。</p>
+			<a href="https://youth.kcg.gov.tw/News_Content.aspx?n=288&s=11311&sms=10300" rel="external">查看高雄市政府青年局公開介紹 ↗</a>
+		</section>
+
 		<section class="profile-contact">
 			<h2>公開連結與聯絡</h2>
 			<p>想了解網站或作品的製作過程，歡迎透過公開帳號聯絡。</p>
@@ -73,6 +84,11 @@ const personSchema = {
 	.profile-grid ul { margin:0; padding-left:1.2rem; }
 	.profile-grid li + li { margin-top:.75rem; }
 	.profile-grid strong { color:var(--text); }
+	.profile-proof { margin-top:2rem; padding:1.6rem; border:1px solid var(--line); background:var(--surface); }
+	.profile-proof .eyebrow { margin-bottom:.5rem; }
+	.profile-proof h2 { margin:0 0 .9rem; font-size:1.35rem; }
+	.profile-proof p:not(.eyebrow) { max-width:680px; color:var(--muted); }
+	.profile-proof a { font-weight:700; text-underline-offset:.18em; }
 	.profile-contact { margin-top:2rem; border:1px solid var(--line); }
 	.profile-links { display:flex; flex-wrap:wrap; gap:.7rem; }
 	.profile-links a { padding:.55rem .8rem; border:1px solid var(--text); color:var(--text); font-weight:700; text-decoration:none; }
