@@ -93,7 +93,41 @@ const faqSchema = faqs.length > 0 ? {
 				)}
 			</article>
 		</main>
+		<dialog class="image-lightbox" aria-label="圖片放大檢視">
+			<button class="image-lightbox-close" type="button" aria-label="關閉圖片">×</button>
+			<img src="" alt="" />
+		</dialog>
 		<Footer />
+		<script>
+			const lightbox = document.querySelector<HTMLDialogElement>('.image-lightbox');
+			const lightboxImage = lightbox?.querySelector<HTMLImageElement>('img');
+			const closeButton = lightbox?.querySelector<HTMLButtonElement>('.image-lightbox-close');
+
+			const openLightbox = (image: HTMLImageElement) => {
+				if (!lightbox || !lightboxImage) return;
+				lightboxImage.src = image.currentSrc || image.src;
+				lightboxImage.alt = image.alt;
+				lightbox.showModal();
+			};
+
+			document.querySelectorAll<HTMLImageElement>('.prose img[src*="/nfc-water-tracking/"]').forEach((image) => {
+				image.tabIndex = 0;
+				image.setAttribute('role', 'button');
+				image.setAttribute('aria-label', `${image.alt}，點擊放大`);
+				image.addEventListener('click', () => openLightbox(image));
+				image.addEventListener('keydown', (event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault();
+						openLightbox(image);
+					}
+				});
+			});
+
+			closeButton?.addEventListener('click', () => lightbox?.close());
+			lightbox?.addEventListener('click', (event) => {
+				if (event.target === lightbox) lightbox.close();
+			});
+		</script>
 	</body>
 </html>
 
@@ -116,4 +150,19 @@ const faqSchema = faqs.length > 0 ? {
 	.update-log h2 { margin:0 0 .65rem; font-size:1.1rem; }
 	.update-log ul { margin:0; padding-left:1.2rem; }
 	.update-log li { margin:.35rem 0; color:var(--muted); }
+
+	.image-lightbox {
+		width: min(92vw, 900px);
+		max-width: none;
+		max-height: 92vh;
+		padding: 2.75rem 1rem 1rem;
+		border: 0;
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+	}
+
+	.image-lightbox::backdrop { background: rgba(0, 0, 0, .78); }
+	.image-lightbox img { display:block; max-width:100%; max-height:calc(92vh - 3.75rem); width:auto; height:auto; margin:auto; }
+	.image-lightbox-close { position:absolute; top:.5rem; right:.7rem; width:2rem; height:2rem; padding:0; border:0; border-radius:50%; background:#111; color:#fff; font-size:1.35rem; line-height:1; cursor:pointer; }
 </style>
