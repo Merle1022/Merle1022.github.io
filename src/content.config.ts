@@ -8,6 +8,14 @@ const posts = defineCollection({
 		description: z.string(),
 		date: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
+		faqs: z
+			.array(
+				z.object({
+					question: z.string().min(1),
+					answer: z.string().min(1),
+				}),
+			)
+			.default([]),
 		updates: z
 			.array(
 				z.object({
