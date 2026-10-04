@@ -12,5 +12,5 @@ export default defineConfig({
 	site,
 	base,
 	trailingSlash: 'always',
-	integrations: [mdx(), sitemap()],
+	integrations: [mdx(), sitemap({ customPages: [`${site}${base}12%E9%80%B1%E9%99%AA%E8%B7%91/`] })],
 });
