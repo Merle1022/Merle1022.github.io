@@ -1,6 +1,6 @@
 # 梅爾 Merle
 
-以 Astro 官方 Blog template 為基礎的個人部落格與作品集，正式主機遷移目標為 Cloudflare Workers Static Assets，網域為 merle188.com。
+以 Astro 官方 Blog template 為基礎的個人部落格與作品集，正式主機遷移目標為 Cloudflare Pages，網域為 merle188.com。
 
 ## 寫文章
 
@@ -40,10 +40,10 @@ npm run dev
 
 - 正式網址：`https://merle188.com`（DNS 與 HTTPS 驗收後才算切換完成）。
 - GitHub repository：`Merle1022/Merle1022.github.io`，production branch：`main`。
-- Cloudflare Worker 名稱：`merle-website`。
-- Build command：`npm run build`，Deploy command：`npm run deploy`。
+- Cloudflare Pages 專案名稱：`merle-website`。
+- Build command：`npm run build`，Build output directory：`dist`；由 Pages 自動部署。
 - 靜態檔目錄：`dist`；不使用 SSR／資料庫，沒有每次瀏覽都執行的 Worker 程式。
 - Node 版本：`.node-version`；可明確設定 `SITE_URL=https://merle188.com`、`BASE_PATH=/`。
-- 依 `wrangler.jsonc` 部署。新網域的 Sitemap、RSS、robots.txt 與 canonical 由建置產生；12週陪跑的獨立 HTML 已更新分享網址。
+- 使用 Cloudflare Pages Git 整合部署。新網域的 Sitemap、RSS、robots.txt 與 canonical 由建置產生；12週陪跑的獨立 HTML 已更新分享網址。
 - `tealove-schedule` 是另一個獨立作品，仍保留它原本的 GitHub Pages 服務網址。
 - 搬站驗收與回復流程見 [docs/cloudflare-migration.md](docs/cloudflare-migration.md)。
