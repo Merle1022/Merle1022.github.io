@@ -112,3 +112,5 @@ AI Team Quest 也有 AI 分組／黑客松組隊模組，包含技能熟悉度�
 準備辦活動、做分組報告，或參加黑客松找隊友？先花幾分鐘回答 24 題，找到自己的合作魔物，再拿著角色卡認識新夥伴。
 
 [立即體驗 AI Team Quest 相遇角色卡](https://ai-team-quest.merle-lab.workers.dev/)
+
+有使用問題、建議，或想分享活動中的使用心得，歡迎到我的 [Instagram @merle__188](https://instagram.com/merle__188) 私訊我。
