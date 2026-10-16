@@ -1,6 +1,8 @@
 ---
 title: "活動破冰怎麼做？用角色卡開始聊天，從分組報告到黑客松組隊"
 description: "活動破冰、分組報告或黑客松組隊前，陌生人怎麼開始聊天？AI Team Quest 用 24 題日常情境產生合作魔物角色卡，提供聊天題目與找人方向，並分享使用流程與設計取捨。"
+image: "blog/ai-team-quest/cover.webp"
+imageAlt: "AI Team Quest 合作魔物角色卡範例"
 date: 2026-10-16
 updatedDate: 2026-10-16
 author: "梅爾 Merle"
@@ -40,7 +42,10 @@ AI Team Quest 的相遇角色卡，透過 24 題日常情境，依照選項算�
 
 角色卡的用途，是幫忙開始對話。至於適不適合一起做事，還是要聊過彼此的想法、時間與合作期待。
 
-![AI Team Quest 相遇角色卡範例：傳聲者星途狐靈、四種力比例與見面聊天題目](/blog/ai-team-quest/role-card-example.png)
+<figure class="article-figure">
+  <img src="/blog/ai-team-quest/role-card-640.webp" srcset="/blog/ai-team-quest/role-card-320.webp 320w, /blog/ai-team-quest/role-card-640.webp 640w" sizes="(max-width: 520px) 220px, 258px" data-full-src="/blog/ai-team-quest/role-card-1080.webp" width="640" height="1043" loading="lazy" decoding="async" alt="AI Team Quest 相遇角色卡範例：傳聲者星途狐靈、四種力比例與見面聊天題目" />
+  <figcaption>點擊圖片可放大</figcaption>
+</figure>
 
 *使用網站內建隨機試玩產生的卡片範例，不含學員資料。*
 

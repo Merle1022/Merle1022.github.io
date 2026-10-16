@@ -10,6 +10,11 @@ import coverThree from '../assets/blog-placeholder-5.jpg';
 interface Props { posts: CollectionEntry<'posts'>[]; variant?: 'rows' | 'cards' }
 const { posts, variant = 'rows' } = Astro.props;
 const covers = [coverOne, coverTwo, coverThree];
+const coverFor = (post: CollectionEntry<'posts'>, index: number) => {
+ const firstImage = post.body?.match(/!\[[^\]]*\]\(([^\s)]+)/)?.[1];
+ const source = post.data.image || firstImage;
+ return source ? { src: /^https?:\/\//.test(source) ? source : withBase(source), alt: post.data.imageAlt || post.data.title } : { src: covers[index % covers.length].src, alt: '' };
+};
 ---
 <ol class:list={['post-list', { 'post-card-grid': variant === 'cards' }]}>
 	{posts.map((post, index) => (
@@ -18,7 +23,7 @@ const covers = [coverOne, coverTwo, coverThree];
 				<article class="post-card" data-post-card data-tags={post.data.tags.join('|')}>
 					<a class="post-card-link" href={withBase(`blog/${post.id}/`)}>
 						<div class="post-card-cover">
-							<img src={covers[index % covers.length].src} alt="" loading="lazy" />
+							<img src={coverFor(post, index).src} alt={coverFor(post, index).alt} width="640" height="400" loading="lazy" decoding="async" />
 						</div>
 						<div class="post-card-content">
 							<p class="post-card-category">{post.data.tags[0] ?? '筆記'}</p>

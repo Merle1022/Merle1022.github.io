@@ -226,3 +226,11 @@ main.container { min-height:calc(100vh - 132px); padding-block:clamp(3rem,7vw,7r
 .work-card-link { display:flex; justify-content:space-between; margin-top:1.5rem; margin-bottom:1.6rem; padding-top:1rem; border-top:1px solid #d9d8d1; color:#111!important; font-weight:800; text-decoration:none; }
 .work-card-link span { transition:transform .2s ease; }
 @media(max-width:700px){.post-card-grid,.work-grid{grid-template-columns:1fr}.post-card-content{min-height:260px}.post-card-cover{height:230px}}
+
+/* Keep inline screenshots readable without interrupting article flow. */
+.prose img { display:block; width:min(100%,640px); height:auto; max-width:100%; max-height:420px; object-fit:contain; margin:1.5rem auto; border-radius:12px; cursor:zoom-in; }
+.prose img:focus-visible { outline:3px solid #111; outline-offset:4px; }
+.prose .article-figure { margin:2rem auto; text-align:center; }
+.prose .article-figure img { width:min(100%,258px); max-width:100%; margin:0 auto; }
+.prose .article-figure figcaption { margin-top:.6rem; color:var(--muted); font-size:.8rem; }
+@media(max-width:520px){.prose img{max-height:360px}.prose .article-figure img{width:min(100%,220px)}}

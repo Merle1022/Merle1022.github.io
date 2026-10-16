@@ -108,12 +108,13 @@ const faqSchema = faqs.length > 0 ? {
 
 			const openLightbox = (image: HTMLImageElement) => {
 				if (!lightbox || !lightboxImage) return;
-				lightboxImage.src = image.currentSrc || image.src;
+				lightboxImage.src = image.dataset.fullSrc || image.currentSrc || image.src;
 				lightboxImage.alt = image.alt;
 				lightbox.showModal();
+				document.documentElement.style.overflow = 'hidden';
 			};
 
-			document.querySelectorAll<HTMLImageElement>('.prose img[src*="/nfc-water-tracking/"]').forEach((image) => {
+			document.querySelectorAll<HTMLImageElement>('.prose img:not(a img)').forEach((image) => {
 				image.tabIndex = 0;
 				image.setAttribute('role', 'button');
 				image.setAttribute('aria-label', `${image.alt}，點擊放大`);
@@ -125,6 +126,8 @@ const faqSchema = faqs.length > 0 ? {
 					}
 				});
 			});
+
+			lightbox?.addEventListener('close', () => { document.documentElement.style.overflow = ''; });
 
 			closeButton?.addEventListener('click', () => lightbox?.close());
 			lightbox?.addEventListener('click', (event) => {
