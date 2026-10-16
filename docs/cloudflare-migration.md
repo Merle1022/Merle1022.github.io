@@ -30,7 +30,7 @@
 ## 回復
 新站驗收前保持 GitHub Pages 舊站可用。若切換失敗，先回復原 DNS／部署設定並保留兩站內容，避免刪除舊 repo 或文章。已啟用的永久導向需評估瀏覽器快取再修改。
 
-## 當前狀態
+## 初始準備狀態（歷史紀錄）
 本機 Astro build、兩項閱讀時間測試及 Wrangler 4.151.1 dry-run 均通過；輸出58個檔案。Sitemap 17個網址的 canonical 全部一致，含七篇文章；RSS、robots.txt、404 noindex 與單檔25MiB限制均通過。Cloudflare 網域為 Active。GitHub 登入／Cloudflare GitHub 連接已由 Merle 完成。尚未宣稱正式搬站成功，部署驗收後追加紀錄。
 
 ## Pages 路徑調整
@@ -38,3 +38,13 @@ Cloudflare Workers 的自動建置會建立跨服務 API token；純靜態網站
 
 ## 舊站轉址方案（等待 main 核准）
 GitHub Pages 不提供任意 HTTP 301 規則，且使用者網站 CNAME 可能連帶影響其他專案網站，因此不變更 CNAME。獨立分支已準備 scripts/build-legacy-redirects.mjs：GitHub workflow 建置後複製輸出，僅將本站17個HTML頁面改為立即 meta refresh、指向新頁的canonical及保留query/hash的location.replace；404與靜態資產保留。Cloudflare仍只部署正常dist。須取得Merle對更新main／舊站部署的明確確認後才啟用。
+
+## Cloudflare 上線驗收（2026-10-16）
+- Pages 專案 merle-website 部署成功，初始 commit ff96d49。主機採 Pages Git 整合，不使用額外API token。
+- merle188.com 與 www.merle188.com 均 Active、SSL enabled；啟用初期的522已消失。
+- 正式站17頁 HTTP200且canonical正確，含七篇文章；17個圖片、CSS、JS等資產均HTTP200；不存在路徑確實404。
+- Cloudflare帳戶Bulk Redirect清單merle_canonical與規則Merle canonical domain均啟用；www及merle-website.pages.dev導向merle188.com，301、保留query、子路徑及path suffix。正常瀏覽器導覽已驗證兩種別名均保留文章路徑和query。
+- Search Console新網址資源已透過Google代碼管理工具自動驗證；sitemap-index.xml已成功提交。提交時報表仍無法擷取、探索0。21:17:51（Asia/Taipei）Google即時測試擷取成功且允許檢索，這不代表Sitemap報表已處理或文章已收錄。
+- 草稿PR：https://github.com/Merle1022/Merle1022.github.io/pull/3 。舊站轉址workflow已透過GitHub網頁提交到搬站分支並核對與本機相同，未部署舊站。
+- 自動審核拒絕直接更新main，理由為可能改變既有GitHub Pages部署。main仍為be856083；已向Merle請求明確同意合併PR、Pages改追main及啟用舊站轉址，未收到同意前不執行。
+- URL-prefix資源已驗證；沒有宣稱完成DNS網域資源或Search Console網址變更。舊站轉址尚未啟用，因此不先宣稱完整搜尋搬站已結束。

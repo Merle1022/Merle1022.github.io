@@ -1,6 +1,6 @@
 # 梅爾 Merle
 
-以 Astro 官方 Blog template 為基礎的個人部落格與作品集，正式主機遷移目標為 Cloudflare Pages，網域為 merle188.com。
+以 Astro 官方 Blog template 為基礎的個人部落格與作品集，正式主機為 Cloudflare Pages，網域為 merle188.com。
 
 ## 寫文章
 
@@ -38,8 +38,8 @@ npm run dev
 
 ## Cloudflare 部署
 
-- 正式網址：`https://merle188.com`（DNS 與 HTTPS 驗收後才算切換完成）。
-- GitHub repository：`Merle1022/Merle1022.github.io`，production branch：`main`。
+- 正式網址：`https://merle188.com`，DNS、HTTPS 與17頁驗收已通過。
+- GitHub repository：`Merle1022/Merle1022.github.io`；目前 Pages production branch 是 `codex/cloudflare-migration`，待 PR #3 核准合併後改為 `main`。
 - Cloudflare Pages 專案名稱：`merle-website`。
 - Build command：`npm run build`，Build output directory：`dist`；由 Pages 自動部署。
 - 靜態檔目錄：`dist`；不使用 SSR／資料庫，沒有每次瀏覽都執行的 Worker 程式。
