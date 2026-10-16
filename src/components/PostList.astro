@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { withBase } from '../consts';
+import { readingTime, READING_TIME_NOTE } from '../utils/reading-time.mjs';
 import coverOne from '../assets/blog-placeholder-1.jpg';
 import coverTwo from '../assets/blog-placeholder-4.jpg';
 import coverThree from '../assets/blog-placeholder-5.jpg';
@@ -23,6 +24,7 @@ const covers = [coverOne, coverTwo, coverThree];
 							<p class="post-card-category">{post.data.tags[0] ?? '筆記'}</p>
 							<h2>{post.data.title}</h2>
 							<p>{post.data.description}</p>
+						<p class="reading-time" title={READING_TIME_NOTE}>閱讀約 {readingTime(post.body)} 分鐘</p>
 							<footer>
 								<FormattedDate date={post.data.date} />
 								<span>繼續閱讀 <b aria-hidden="true">→</b></span>
@@ -35,6 +37,7 @@ const covers = [coverOne, coverTwo, coverThree];
 					<div>
 						<h2>{post.data.title}</h2>
 						<p>{post.data.description}</p>
+						<p class="reading-time" title={READING_TIME_NOTE}>閱讀約 {readingTime(post.body)} 分鐘</p>
 						<div class="tags">{post.data.tags.map((tag) => <span>#{tag}</span>)}</div>
 					</div>
 					<FormattedDate date={post.data.date} />

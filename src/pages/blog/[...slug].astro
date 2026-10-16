@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
+import { readingTime } from '../../utils/reading-time.mjs';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -11,7 +12,7 @@ type Props = CollectionEntry<'posts'>;
 const post = Astro.props;
 const { Content, headings } = await render(post);
 ---
-<BlogPost {...post.data}>
+<BlogPost {...post.data} readingMinutes={readingTime(post.body)}>
 	<TableOfContents headings={headings} slot="toc" />
 	<Content />
 </BlogPost>

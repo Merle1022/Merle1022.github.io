@@ -4,12 +4,13 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE, withBase } from '../consts';
+import { READING_TIME_NOTE } from '../utils/reading-time.mjs';
 
 interface Series { title: string; slug: string }
 interface Update { date: Date; summary: string }
 interface FAQ { question: string; answer: string }
-interface Props { title: string; description: string; image?: string; imageAlt?: string; date: Date; updatedDate?: Date; faqs?: FAQ[]; updates?: Update[]; author: string; tags: string[]; series?: Series; affiliateDisclosure?: boolean }
-const { title, description, image, imageAlt, date, updatedDate, faqs = [], updates = [], author, tags, series, affiliateDisclosure = false } = Astro.props;
+interface Props { readingMinutes: number; title: string; description: string; image?: string; imageAlt?: string; date: Date; updatedDate?: Date; faqs?: FAQ[]; updates?: Update[]; author: string; tags: string[]; series?: Series; affiliateDisclosure?: boolean }
+const { readingMinutes, title, description, image, imageAlt, date, updatedDate, faqs = [], updates = [], author, tags, series, affiliateDisclosure = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const authorURL = new URL(withBase('about/'), Astro.site);
 const articleImageURL = image ? new URL(withBase(image), Astro.site).href : undefined;
@@ -33,6 +34,7 @@ const articleSchema = {
 	},
 	mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL.href },
 	keywords: tags.join(', '),
+	timeRequired: `PT${readingMinutes}M`,
 	inLanguage: 'zh-Hant',
 	...(articleImageURL ? { image: articleImageURL } : {}),
 };
@@ -67,6 +69,7 @@ const faqSchema = faqs.length > 0 ? {
 					)}
 					<h1>{title}</h1>
 					<p>{description}</p>
+					<p class="article-byline" data-reading-time title={READING_TIME_NOTE}>閱讀約 {readingMinutes} 分鐘</p>
 					<p class="article-byline">作者：<a href={withBase('about/')}>{author}</a></p>
 					{series && <a class="series-link" href={withBase(`blog/series/${series.slug}/`)}>專欄：{series.title}</a>}
 					<div class="tags">{tags.map((tag) => <span>#{tag}</span>)}</div>
