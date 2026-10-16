@@ -27,19 +27,12 @@ npm run dev
 
 ## GitHub Pages 與自訂網域
 
-切換完成後，推送到 `main` 會讓 Cloudflare 建置正式網站，GitHub Actions 則產生舊網址的立即轉址頁。先在 repository 的 **Settings → Pages → Source** 選擇 **GitHub Actions**。
-
-要改用自訂網域時，在 repository 的 **Settings → Environments → github-pages** 設定：
-
-- `SITE_URL`：例如 `https://example.com`
-- `BASE_PATH`：`/`
-
-並依 GitHub Pages 指示設定 custom domain 與 DNS；網站程式本身不需改結構。
+推送到 `main` 會讓 Cloudflare 建置正式網站，GitHub Actions 則產生舊網址的立即轉址頁。GitHub Pages Source 已設定為 **GitHub Actions**。自訂網域與 DNS 由 Cloudflare 管理，不設定 GitHub Pages CNAME，以保留其他 repository 專案網站。
 
 ## Cloudflare 部署
 
 - 正式網址：`https://merle188.com`，DNS、HTTPS 與17頁驗收已通過。
-- GitHub repository：`Merle1022/Merle1022.github.io`；目前 Pages production branch 是 `codex/cloudflare-migration`，待 PR #3 核准合併後改為 `main`。
+- GitHub repository：`Merle1022/Merle1022.github.io`；Pages production branch 為 `main`，已啟用自動部署；PR #3 已核准合併。
 - Cloudflare Pages 專案名稱：`merle-website`。
 - Build command：`npm run build`，Build output directory：`dist`；由 Pages 自動部署。
 - 靜態檔目錄：`dist`；不使用 SSR／資料庫，沒有每次瀏覽都執行的 Worker 程式。

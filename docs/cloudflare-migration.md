@@ -48,3 +48,6 @@ GitHub Pages 不提供任意 HTTP 301 規則，且使用者網站 CNAME 可能�
 - 草稿PR：https://github.com/Merle1022/Merle1022.github.io/pull/3 。舊站轉址workflow已透過GitHub網頁提交到搬站分支並核對與本機相同，未部署舊站。
 - 自動審核拒絕直接更新main，理由為可能改變既有GitHub Pages部署。main仍為be856083；已向Merle請求明確同意合併PR、Pages改追main及啟用舊站轉址，未收到同意前不執行。
 - URL-prefix資源已驗證；沒有宣稱完成DNS網域資源或Search Console網址變更。舊站轉址尚未啟用，因此不先宣稱完整搜尋搬站已結束。
+
+## main 切換完成（2026-10-16）
+Merle 明確同意合併並啟用舊站轉址。PR #3 已合併（9d479d5），GitHub Pages Source 已切換為 Actions；轉址部署成功。Cloudflare production branch 已改為 main，自動部署啟用。瀏覽器實測舊文章網址可保留路徑、query 與 fragment 到新站。其後 main 另有已發布文章／作品更新 8e7269e，搬站不回退該更新。Search Console 主 Sitemap 報表重查仍顯示無法擷取／探索0；先前 Google 即時擷取成功，尚不能宣稱已收錄或已完成網址變更工具。
