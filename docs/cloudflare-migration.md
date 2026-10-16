@@ -35,3 +35,6 @@
 
 ## Pages 路徑調整
 Cloudflare Workers 的自動建置會建立跨服務 API token；純靜態網站改採 Pages Git 整合，不新增該 token。移除尚未上線的 Wrangler 套件與設定。自動審核擋下直接 push main，先用 codex/cloudflare-migration 作為 Pages production branch；main 與原 GitHub Pages 設定尚未變更，待新站驗收後取得明確核准。
+
+## 舊站轉址方案（等待 main 核准）
+GitHub Pages 不提供任意 HTTP 301 規則，且使用者網站 CNAME 可能連帶影響其他專案網站，因此不變更 CNAME。獨立分支已準備 scripts/build-legacy-redirects.mjs：GitHub workflow 建置後複製輸出，僅將本站17個HTML頁面改為立即 meta refresh、指向新頁的canonical及保留query/hash的location.replace；404與靜態資產保留。Cloudflare仍只部署正常dist。須取得Merle對更新main／舊站部署的明確確認後才啟用。

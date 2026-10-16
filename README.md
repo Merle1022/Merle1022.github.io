@@ -27,7 +27,7 @@ npm run dev
 
 ## GitHub Pages 與自訂網域
 
-推送到 `main` 後，GitHub Actions 會自動建置與部署。先在 repository 的 **Settings → Pages → Source** 選擇 **GitHub Actions**。
+切換完成後，推送到 `main` 會讓 Cloudflare 建置正式網站，GitHub Actions 則產生舊網址的立即轉址頁。先在 repository 的 **Settings → Pages → Source** 選擇 **GitHub Actions**。
 
 要改用自訂網域時，在 repository 的 **Settings → Environments → github-pages** 設定：
 
@@ -47,3 +47,5 @@ npm run dev
 - 使用 Cloudflare Pages Git 整合部署。新網域的 Sitemap、RSS、robots.txt 與 canonical 由建置產生；12週陪跑的獨立 HTML 已更新分享網址。
 - `tealove-schedule` 是另一個獨立作品，仍保留它原本的 GitHub Pages 服務網址。
 - 搬站驗收與回復流程見 [docs/cloudflare-migration.md](docs/cloudflare-migration.md)。
+
+GitHub Pages 不支援任意 HTTP 301 規則；舊站使用立即 meta refresh 與 canonical，並以 JavaScript 保留查詢參數及 fragment。它不會設定整個使用者網站的 CNAME，因此其他 repository 的專案網站不會被一起改網域。
