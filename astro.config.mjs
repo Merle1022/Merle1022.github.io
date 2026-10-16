@@ -3,9 +3,9 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
-// GitHub Actions supplies these automatically. For a custom domain, set SITE_URL
-// to the domain and BASE_PATH to "/" in the repository environment variables.
-const site = process.env.SITE_URL || 'http://localhost:4321';
+// Hosting builds may override these values. Local development keeps localhost;
+// production defaults to the canonical domain, including Cloudflare builds.
+const site = process.env.SITE_URL || (process.env.NODE_ENV === 'production' ? 'https://merle188.com' : 'http://localhost:4321');
 const base = process.env.BASE_PATH || '/';
 
 export default defineConfig({
