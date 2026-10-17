@@ -1,8 +1,8 @@
 ---
 title: "活動破冰怎麼做？用角色卡開始聊天，從分組報告到黑客松組隊"
 description: "活動破冰、分組報告或黑客松組隊前，陌生人怎麼開始聊天？AI Team Quest 用 24 題日常情境產生合作魔物角色卡，提供聊天題目與找人方向，並分享使用流程與設計取捨。"
-image: "blog/ai-team-quest/cover.webp"
-imageAlt: "AI Team Quest 合作魔物角色卡範例"
+image: "blog/ai-team-quest/cover-designed.webp"
+imageAlt: "活動破冰角色卡：AI Team Quest 星途狐靈橫式封面"
 date: 2026-10-16
 updatedDate: 2026-10-16
 author: "梅爾 Merle"
