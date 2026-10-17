@@ -3,27 +3,21 @@ import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { withBase } from '../consts';
 import { readingTime, READING_TIME_NOTE } from '../utils/reading-time.mjs';
-import coverOne from '../assets/blog-placeholder-1.jpg';
-import coverTwo from '../assets/blog-placeholder-4.jpg';
-import coverThree from '../assets/blog-placeholder-5.jpg';
-
 interface Props { posts: CollectionEntry<'posts'>[]; variant?: 'rows' | 'cards' }
 const { posts, variant = 'rows' } = Astro.props;
-const covers = [coverOne, coverTwo, coverThree];
-const coverFor = (post: CollectionEntry<'posts'>, index: number) => {
- const firstImage = post.body?.match(/!\[[^\]]*\]\(([^\s)]+)/)?.[1];
- const source = post.data.image || firstImage;
- return source ? { src: /^https?:\/\//.test(source) ? source : withBase(source), alt: post.data.imageAlt || post.data.title } : { src: covers[index % covers.length].src, alt: '' };
+const coverFor = (post: CollectionEntry<'posts'>) => {
+ const source = post.data.image!; // Published content requires a cover in the schema.
+ return { src: /^https?:\/\//.test(source) ? source : withBase(source), alt: post.data.imageAlt || post.data.title };
 };
 ---
 <ol class:list={['post-list', { 'post-card-grid': variant === 'cards' }]}>
-	{posts.map((post, index) => (
+	{posts.map((post) => (
 		<li>
 			{variant === 'cards' ? (
 				<article class="post-card" data-post-card data-tags={post.data.tags.join('|')}>
 					<a class="post-card-link" href={withBase(`blog/${post.id}/`)}>
 						<div class="post-card-cover">
-							<img src={coverFor(post, index).src} alt={coverFor(post, index).alt} width="640" height="400" loading="lazy" decoding="async" />
+							<img src={coverFor(post).src} alt={coverFor(post).alt} width="640" height="400" loading="lazy" decoding="async" />
 						</div>
 						<div class="post-card-content">
 							<p class="post-card-category">{post.data.tags[0] ?? '筆記'}</p>

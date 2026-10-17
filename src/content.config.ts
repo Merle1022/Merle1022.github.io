@@ -36,7 +36,11 @@ const posts = defineCollection({
 			.optional(),
 		affiliateDisclosure: z.boolean().default(false),
 		draft: z.boolean().default(false),
-	}),
+	}).superRefine((data, ctx) => {
+        if (!data.draft && (!data.image?.trim() || !data.imageAlt?.trim())) {
+            ctx.addIssue({ code: 'custom', message: '已發布文章需填入 image 封面與 imageAlt 圖片描述；草稿可先留空。', path: ['image'] });
+        }
+    }),
 });
 
 const works = defineCollection({

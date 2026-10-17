@@ -75,6 +75,9 @@ const faqSchema = faqs.length > 0 ? {
 					{series && <a class="series-link" href={withBase(`blog/series/${series.slug}/`)}>專欄：{series.title}</a>}
 					<div class="tags">{tags.map((tag) => <span>#{tag}</span>)}</div>
 				</header>
+                {image && <figure class="article-cover">
+                    <img src={withBase(image)} alt={imageAlt || title} width="1200" height="750" fetchpriority="high" decoding="async" />
+                </figure>}
 				<aside class="tldr-box" aria-label="文章快速摘要">
 					<strong>💡 快速摘要</strong>
 					<p>{description}</p>
@@ -140,6 +143,9 @@ const faqSchema = faqs.length > 0 ? {
 </html>
 
 <style>
+    .article-cover { width:min(100%,760px); margin:2rem auto; }
+    .article-cover img { display:block; width:100%; height:auto; aspect-ratio:8/5; object-fit:cover; }
+
 	.tldr-box {
 		margin: 1.5rem 0;
 		padding: 1.25rem 1.5rem;

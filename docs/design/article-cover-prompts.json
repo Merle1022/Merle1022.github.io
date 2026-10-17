@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-17",
+  "tool": "built-in image_gen",
+  "common": "Use case: stylized-concept. Asset type: standalone editorial article cover for Merle's Traditional Chinese personal blog. Generate ONE image, landscape 1.6:1 composition, ideally 1536x960 pixels. Cohesive series direction: refined tactile paper sculpture mixed with small believable real objects, warm ivory background #f7f6f2, charcoal #111 and restrained golden yellow #f6df38 accents, occasional muted sage allowed when specified. Soft natural side lighting, delicate paper grain, subtle realistic contact shadows, premium quiet independent magazine art direction, generous negative space, strong distinctive central metaphor that reads at 320px. Keep all key subjects inside central 75% width and 70% height so landscape card and OG crops are safe. No lettering, typography, numbers, watermark, signature, fake UI, stock gradients, purple/neon palette, generic floating futuristic AI networks, or collage panels. This is an illustrative cover, not documentary evidence. Specific subject: ",
+  "assets": [
+    {
+      "id": "12-week-year-coaching-guide",
+      "subject": "A sculptural paper desk calendar with exactly twelve blank folded weekly tabs forming a small ascending path, beside a restrained analog clock and an open notebook with abstract blank checkboxes; evokes sustainable weekly action rather than hustle. No numbers or written words."
+    },
+    {
+      "id": "ai-confirm-understanding-before-prompt",
+      "subject": "Two matte black and ivory sculptural conversation bubbles facing each other over an open notebook, with one small yellow interlocking connector between them; a quiet metaphor for checking mutual understanding before working with AI. No robot face, no AI wordmarks, no text."
+    },
+    {
+      "id": "baguio-wales-language-school-review",
+      "subject": "A quiet editorial paper diorama of a misty Philippine mountain town with pine trees, modest terraced buildings on a steep hillside, an open English-learning notebook and small travel bag in the foreground. Cool mountain atmosphere, pale muted sage secondary color. Not an actual photographed school; no school logos, no maps or invented real architecture, no people, no readable text."
+    },
+    {
+      "id": "government-ai-training-review",
+      "subject": "A sculptural workshop desk with a laptop displaying a completely abstract arrangement of connected blank geometric modules, a blank spiral course notebook and a few physical paper project components arranged for hands-on learning; a modest classroom window silhouette behind. Reflects evaluating practical AI training, no government seals, no graduation claims, no robots, no text."
+    },
+    {
+      "id": "new-media-marketing-certification-kaohsiung",
+      "subject": "A folded blank practice exam sheet with sparse abstract answer circles, a pencil and a small black camera lens, beside a phone with a blank ivory screen and a tiny yellow bookmark. Editorial metaphor for preparing a social media marketing certification, no official seal, no fabricated certificate, no branding, no text."
+    },
+    {
+      "id": "nfc-iphone-shortcuts-water-tracking",
+      "subject": "A clean transparent drinking glass half full with real water caustics, a small round black NFC sticker on its side, next to a black modern smartphone lying on an ivory desk; phone screen is a simple abstract yellow water droplet with no text or interface labels. One tactile yellow paper wave reinforces a quiet everyday automation theme. No health claims, no logos."
+    },
+    {
+      "id": "why-i-built-my-own-website",
+      "subject": "A warm editorial architectural paper model of a personal website built from a few ivory rectangular pages arranged around a central black browser window frame with a small yellow tab; one pencil and two paper offcuts suggest making a simple independent home on the web. Abstract browser panels only, no code, no logos, no readable text."
+    }
+  ]
+}

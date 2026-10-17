@@ -23,6 +23,8 @@ faqs:
     answer: "可以用來解釋名詞、比較選項和整理容易混淆的題目，但 AI 可能產生錯誤答案，使用後仍要回到官方教材或可信來源核對。"
 affiliateDisclosure: false
 draft: false
+image: "blog/covers/new-media-marketing-certification-kaohsiung.webp"
+imageAlt: "新媒體行銷備考的概念插畫：練習題、鉛筆、鏡頭與手機"
 ---
 
 如果你正在找高雄自媒體課程、自媒體證照，或想知道「新媒體行銷管理師」值不值得考，這篇整理我的實際報考經驗。

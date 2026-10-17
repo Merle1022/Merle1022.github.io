@@ -7,6 +7,8 @@ author: "梅爾 Merle"
 tags: [經濟部AI課程, 免費AI課程, 政府補助AI課程, 青年AI實戰養成班, AI智慧行銷, 國立臺中科技大學, AI課程心得, 作品集]
 affiliateDisclosure: false
 draft: false
+image: "blog/covers/government-ai-training-review.webp"
+imageAlt: "AI 實戰課程的概念插畫：筆電、課程筆記與實作素材"
 ---
 
 如果時間倒回兩個月前，我還是會報名。
