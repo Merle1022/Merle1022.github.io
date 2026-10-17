@@ -1,6 +1,8 @@
 ---
 title: "AI 人才探索與組隊｜AI Team Quest"
 description: "線下破冰用的「相遇角色卡」＋ AI 分組組隊平台"
+image: "blog/ai-team-quest/cover-designed.webp"
+imageAlt: "AI Team Quest 相遇角色卡的星途狐靈正式橫式封面"
 date: 2026-10-16
 tags: [活動破冰, 角色卡, AI 組隊]
 status: "已上線"

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-17",
+  "seriesName": "角色卡封面系列",
+  "tool": "built-in image_gen",
+  "useCase": "ads-marketing",
+  "sharedReference": "public/blog/covers/12-week-year-coaching-guide-v2.webp",
+  "sharedDirection": "Use the approved 12-week article cover as title typography and premium illustration reference. Work subjects come from each project; named role styles supply only palette, material, light and mood. No creatures, animals or characters.",
+  "covers": [
+    {
+      "id": "12week-coaching",
+      "role": "築城者・晶甲犀牛",
+      "headlineLines": [
+        "12 週執行力",
+        "陪跑營"
+      ],
+      "subtitle": "每週小組 × 行動追蹤",
+      "subject": "A crafted twelve-week calendar with twelve small illuminated markers, three simple seats around a meeting table and a visible progress path, reflecting three-person small-group coaching and weekly action review; no promises of guaranteed outcomes.",
+      "prompt": "Use case: ads-marketing. Create ONE finished Traditional Chinese portfolio cover, landscape 8:5, 1600x1000 preferred. The attached approved 12-week article cover is a STYLE and TYPOGRAPHY reference only, not an edit target. Left 48%: huge sharp headline exactly '12 週執行力' and '陪跑營' on separate lines; smaller legible subtitle exactly '每週小組 × 行動追蹤'; small top badge exactly 'MERLE WORKS'. Right 52%: A crafted twelve-week calendar with twelve small illuminated markers, three simple seats around a meeting table and a visible progress path, reflecting three-person small-group coaching and weekly action review; no promises of guaranteed outcomes. Use 築城者 style: layered jade crystal, stable architectural forms and completed stages around the real article subject. Midnight navy, forest green, jade and restrained gold. No rhino, horn, animal or character. Elegant midnight star-map depth and high material detail. All text and main objects inside an 8% safe margin, readable at 320px. No AI TEAM QUEST branding, creature, animal, mascot, person, fake product screenshot, invented logo, additional text or watermark."
+    },
+    {
+      "id": "cyber-talisman-key-forge",
+      "role": "守夜者・星環黑豹",
+      "headlineLines": [
+        "金鑰鍊成器"
+      ],
+      "subtitle": "密碼產生 × 本機加密",
+      "subject": "A luminous sealed key capsule, a paper talisman inspired by geometric ink strokes, and one local vault box; do not depict readable passwords or claim audited security.",
+      "prompt": "Use case: ads-marketing. Create ONE finished Traditional Chinese portfolio cover, landscape 8:5, 1600x1000 preferred. The attached approved 12-week article cover is a STYLE and TYPOGRAPHY reference only, not an edit target. Left 48%: huge sharp headline exactly '金鑰鍊成器' on separate lines; smaller legible subtitle exactly '密碼產生 × 本機加密'; small top badge exactly 'MERLE WORKS'. Right 52%: A luminous sealed key capsule, a paper talisman inspired by geometric ink strokes, and one local vault box; do not depict readable passwords or claim audited security. Use 守夜者 style: calm obsidian surfaces, precise violet orbital rings, fine star points and silver-violet rim light around the real subject. No fabricated chart values. No panther, animal or character. Elegant midnight star-map depth and high material detail. All text and main objects inside an 8% safe margin, readable at 320px. No AI TEAM QUEST branding, creature, animal, mascot, person, fake product screenshot, invented logo, additional text or watermark."
+    },
+    {
+      "id": "merle-personal-site",
+      "role": "開路者・熾角雄鹿",
+      "headlineLines": [
+        "梅爾的",
+        "個人網站"
+      ],
+      "subtitle": "文章 × 作品 × AI 實作",
+      "subject": "An open editorial book unfolding into a handcrafted personal web portal, with blank content panels and a small portfolio gallery, showing the first publicly launched personal website without copying a real UI.",
+      "prompt": "Use case: ads-marketing. Create ONE finished Traditional Chinese portfolio cover, landscape 8:5, 1600x1000 preferred. The attached approved 12-week article cover is a STYLE and TYPOGRAPHY reference only, not an edit target. Left 48%: huge sharp headline exactly '梅爾的' and '個人網站' on separate lines; smaller legible subtitle exactly '文章 × 作品 × AI 實作'; small top badge exactly 'MERLE WORKS'. Right 52%: An open editorial book unfolding into a handcrafted personal web portal, with blank content panels and a small portfolio gallery, showing the first publicly launched personal website without copying a real UI. Use 開路者 style: warm amber sparks and elegant branching exploration paths around the actual article subject. Midnight blue, ember orange and restrained gold; exploratory but precise. No stag, deer, antlers, animal or character. Elegant midnight star-map depth and high material detail. All text and main objects inside an 8% safe margin, readable at 320px. No AI TEAM QUEST branding, creature, animal, mascot, person, fake product screenshot, invented logo, additional text or watermark."
+    },
+    {
+      "id": "tealove-schedule",
+      "role": "牽線者・苔角幼鹿",
+      "headlineLines": [
+        "鮮茶樂",
+        "排班系統"
+      ],
+      "subtitle": "班表 × 工時 × 庫存",
+      "subject": "An illustrated blank weekly shift board linked by fine vines to a tea cup and three inventory jars; no fake staff names, shift numbers, salary data or product screenshots.",
+      "prompt": "Use case: ads-marketing. Create ONE finished Traditional Chinese portfolio cover, landscape 8:5, 1600x1000 preferred. The attached approved 12-week article cover is a STYLE and TYPOGRAPHY reference only, not an edit target. Left 48%: huge sharp headline exactly '鮮茶樂' and '排班系統' on separate lines; smaller legible subtitle exactly '班表 × 工時 × 庫存'; small top badge exactly 'MERLE WORKS'. Right 52%: An illustrated blank weekly shift board linked by fine vines to a tea cup and three inventory jars; no fake staff names, shift numbers, salary data or product screenshots. Use 牽線者 style: living vines, moss, leaves and amber seed-lights connecting two or three article-relevant objects. Forest green, jade, warm ivory and honey-gold. No fawn, deer, antlers, animal or character. Elegant midnight star-map depth and high material detail. All text and main objects inside an 8% safe margin, readable at 320px. No AI TEAM QUEST branding, creature, animal, mascot, person, fake product screenshot, invented logo, additional text or watermark."
+    }
+  ],
+  "existingCover": {
+    "id": "ai-team-quest",
+    "asset": "public/blog/ai-team-quest/cover-designed.webp",
+    "reason": "This project is the role-card product itself, so its existing approved official titled cover accurately depicts its real subject."
+  }
+}

@@ -1,6 +1,8 @@
 ---
 title: "梅爾 Merle｜個人網站、部落格與作品集"
 description: "從平台比較、內容架構、品牌視覺到自動部署，與 AI 協作完成的第一個個人網站專案。"
+image: "works/covers/merle-personal-site.webp"
+imageAlt: "梅爾個人網站概念插畫：書頁延伸出文章與作品頁面"
 date: 2026-07-20
 tags: [個人網站, Astro, AI 協作]
 url: "https://merle1022.github.io/"

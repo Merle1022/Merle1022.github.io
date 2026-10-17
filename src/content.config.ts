@@ -48,6 +48,8 @@ const works = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
+		image: z.string().min(1),
+		imageAlt: z.string().min(1),
 		date: z.coerce.date(),
 		tags: z.array(z.string()).default([]),
 		status: z.string().optional(),
