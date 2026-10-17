@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-17",
+  "source": "https://ai-team-quest.merle-lab.workers.dev/meet/",
+  "approvedDirection": "Use eight role-card visual languages as palette, material, light and mood references for article-specific subject illustrations. Never draw the creatures or characters, except when the article itself is about a role card.",
+  "assembly": "Combine sharedPrompt, one style rolePrompt and the article brief. Role names label style sources only; the actual image subject comes from the article.",
+  "sharedPrompt": "Create ONE finished Traditional Chinese blog article cover, landscape 8:5, 1600x1000 preferred. Use the approved titled 12-week article cover as a quality reference. Left 48%: huge sharp Traditional Chinese headline '{headline}' and smaller readable subtitle '{subtitle}', plus a discreet MERLE NOTES badge. Right 52%: a concrete scene or object from the actual article, illustrated with celestial depth, fine star-map arcs, tactile materials and the selected style's palette and light. Keep important content inside an 8% safe margin and readable at 320px. Correct Traditional Chinese only; no additional words. No creatures, animals, mascots, people, role-card UI, AI TEAM QUEST branding, fabricated evidence, fake interface, official logo, watermark or generic stock-photo look. Conceptual illustration, not a depiction of a real location or product UI.",
+  "articleBriefTemplate": "Article core: {one sentence describing the article's actual subject and reader takeaway}. Depict these concrete subject elements: {2-3 objects or actions genuinely present in the article}. Do not invent evidence, outcomes, institutions, interfaces, or locations.",
+  "roles": [
+    {
+      "id": "trailblazer-stag",
+      "name": "開路者",
+      "creature": "熾角雄鹿",
+      "function": "開新方向",
+      "visualSignature": "Amber sparks, branching paths, compass-star engraving, deep navy, burnt orange and antique gold.",
+      "bestFor": [
+        "新點子",
+        "趨勢觀察",
+        "第一次嘗試",
+        "探索選項",
+        "開創方向"
+      ],
+      "rolePrompt": "Use 開路者 style: warm amber sparks and elegant branching exploration paths around the actual article subject. Midnight blue, ember orange and restrained gold; exploratory but precise. No stag, deer, antlers, animal or character."
+    },
+    {
+      "id": "messenger-fox",
+      "name": "傳聲者",
+      "creature": "星途狐靈",
+      "function": "對外發聲",
+      "visualSignature": "Ivory and jade flowing ribbons, turquoise glints and constellation trails.",
+      "bestFor": [
+        "教學解說",
+        "觀點分享",
+        "溝通表達",
+        "把複雜內容說清楚",
+        "公開發表"
+      ],
+      "rolePrompt": "Use 傳聲者 style: flowing jade and ivory ribbons and luminous star trails to help explain the actual article subject. Midnight navy, mint light and restrained gold. No fox, ears, tail, animal or character."
+    },
+    {
+      "id": "host-otter",
+      "name": "暖場者",
+      "creature": "月潮水獺",
+      "function": "營造氣氛",
+      "visualSignature": "Moonlit water rings, soft tide curves and silver-blue reflections.",
+      "bestFor": [
+        "社群與活動",
+        "人際互動",
+        "學習陪伴",
+        "合作經驗",
+        "讓參與者安心加入"
+      ],
+      "rolePrompt": "Use 暖場者 style: welcoming moonlit water rings, gentle tide curves and silver-blue reflections around the article setting. Deep ocean blue, turquoise and cool jade. No otter, animal or character."
+    },
+    {
+      "id": "connector-fawn",
+      "name": "牽線者",
+      "creature": "苔角幼鹿",
+      "function": "媒合資源",
+      "visualSignature": "Fine vines, moss, leaves and amber seed-lights linking separate objects.",
+      "bestFor": [
+        "資源整理",
+        "工具或服務推薦",
+        "合作媒合",
+        "人物與機會",
+        "把分散資訊串起來"
+      ],
+      "rolePrompt": "Use 牽線者 style: living vines, moss, leaves and amber seed-lights connecting two or three article-relevant objects. Forest green, jade, warm ivory and honey-gold. No fawn, deer, antlers, animal or character."
+    },
+    {
+      "id": "sprinter-cheetah",
+      "name": "疾行者",
+      "creature": "電紋獵豹",
+      "function": "快速推進",
+      "visualSignature": "Violet-blue electric lines, clean diagonals and focused motion ribbons.",
+      "bestFor": [
+        "步驟教學",
+        "快速上手",
+        "實作紀錄",
+        "捷徑與效率",
+        "把想法立刻做出來"
+      ],
+      "rolePrompt": "Use 疾行者 style: fine violet-blue electric lines and crisp diagonal motion ribbons pointing toward the actual action. Obsidian, indigo, electric violet and cyan. No cheetah, spots, animal or character."
+    },
+    {
+      "id": "builder-rhino",
+      "name": "築城者",
+      "creature": "晶甲犀牛",
+      "function": "穩定交付",
+      "visualSignature": "Layered translucent jade crystal, solid architecture and gold seams.",
+      "bestFor": [
+        "長期計畫",
+        "課程或訓練紀錄",
+        "系統建立",
+        "持續累積",
+        "穩定交付成果"
+      ],
+      "rolePrompt": "Use 築城者 style: layered jade crystal, stable architectural forms and completed stages around the real article subject. Midnight navy, forest green, jade and restrained gold. No rhino, horn, animal or character."
+    },
+    {
+      "id": "watcher-panther",
+      "name": "守夜者",
+      "creature": "星環黑豹",
+      "function": "檢查風險",
+      "visualSignature": "Obsidian surfaces, violet orbital rings, constellation points and silver rim light.",
+      "bestFor": [
+        "評測與心得",
+        "優缺缺點比較",
+        "費用與限制",
+        "風險檢查",
+        "查證和決策分析"
+      ],
+      "rolePrompt": "Use 守夜者 style: calm obsidian surfaces, precise violet orbital rings, fine star points and silver-violet rim light around the real subject. No fabricated chart values. No panther, animal or character."
+    },
+    {
+      "id": "refiner-prism-cat",
+      "name": "琢磨者",
+      "creature": "稜晶羽貓",
+      "function": "優化流程",
+      "visualSignature": "Faceted crystal, fine geometry, icy cyan, lavender, pink-violet and opal refraction.",
+      "bestFor": [
+        "流程改善",
+        "工具設計",
+        "模板與整理",
+        "反覆優化",
+        "把複雜事變好用"
+      ],
+      "rolePrompt": "Use 琢磨者 style: delicate prismatic refraction and precise faceted details around the actual workflow or tool. Icy cyan, lavender, pink-violet and opal. No cat, feathers, animal or character."
+    }
+  ],
+  "balancedSpecialCase": {
+    "name": "多面手",
+    "creature": "霜羽羅盤獸",
+    "status": "Special balanced result, not one of the eight regular roles",
+    "visualSignature": "Silver-white multi-direction compass light, cool blue and muted lilac paths converging around the actual subject.",
+    "bestFor": [
+      "跨領域總覽",
+      "多種方法整合",
+      "沒有單一主軸的比較指南"
+    ],
+    "rolePrompt": "Optional balanced style for a genuine multi-direction overview: silver-white light, a crafted compass and muted lilac paths around the actual article subject. No beast, animal or character."
+  }
+}

@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
 import ArrowRight from 'bootstrap-icons/icons/arrow-right.svg';
-import Leaf from 'bootstrap-icons/icons/leaf.svg';
 import { SITE_DESCRIPTION, SITE_TITLE, withBase } from '../consts';
 import { readingTime } from '../utils/reading-time.mjs';
 
@@ -90,7 +89,7 @@ const personSchema = {
       <h2 id="projects-title" class="section-label">做出來的東西</h2>
       <div class="project-links">
         {selectedWorks.map((work) => work && <a class="project-link" href={work.data.detail ? withBase(work.data.detail) : work.data.url || withBase('works/')}>
-          <div class="project-mark" aria-hidden="true">{work.id === 'ai-team-quest' ? <img src={withBase('blog/ai-team-quest/cover-designed.webp')} alt="" width="72" height="72" loading="lazy" /> : <Leaf />}</div>
+          <div class="project-mark" aria-hidden="true"><img src={withBase(work.data.image)} alt="" width="72" height="72" loading="lazy" /></div>
           <div><h3>{work.id === 'ai-team-quest' ? 'AI Team Quest' : '鮮茶樂排班系統'}</h3><p>{work.id === 'ai-team-quest' ? '用相遇角色卡打開話題，讓第一次見面也有話聊。' : '把排班、工時與庫存整理在一起，讓店務管理更順手。'}</p></div>
           <ArrowRight aria-hidden="true" />
         </a>)}

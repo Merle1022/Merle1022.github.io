@@ -1,21 +1,18 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import coverOne from '../assets/blog-placeholder-2.jpg';
-import coverTwo from '../assets/blog-placeholder-3.jpg';
-import coverThree from '../assets/blog-placeholder-about.jpg';
+import { withBase } from '../consts';
 interface Props { works: CollectionEntry<'works'>[] }
 const { works } = Astro.props;
-const covers = [coverOne, coverTwo, coverThree];
 ---
 <div class="work-grid">
-	{works.map((work, index) => (
+	{works.map((work) => (
 		<article class="work-card">
 			<div class="work-card-cover">
-				<img src={covers[index % covers.length].src} alt="" loading="lazy" />
-				{work.data.status && <span class="work-status">{work.data.status}</span>}
+				<img src={withBase(work.data.image)} alt={work.data.imageAlt} width="1200" height="750" loading="lazy" decoding="async" />
 			</div>
 			<div class="work-card-meta">
 				<p class="eyebrow">{work.data.tags.join(' · ')}</p>
+				{work.data.status && <span class="work-status">{work.data.status}</span>}
 			</div>
 			<h2>{work.data.title}</h2>
 			<p class="work-description">{work.data.description}</p>

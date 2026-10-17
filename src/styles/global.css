@@ -216,8 +216,9 @@ main.container { min-height:calc(100vh - 132px); padding-block:clamp(3rem,7vw,7r
 .work-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1.25rem,3vw,2.25rem); }
 .work-card { overflow:hidden; min-height:0; padding:0; border:0; border-radius:0 0 2.25rem 2.25rem; box-shadow:0 0 0 1px #e3e1db; transition:transform .28s ease,box-shadow .28s ease; }
 .work-card:hover { border-color:transparent; transform:translateY(-10px); box-shadow:0 1.25rem 2.5rem rgba(17,17,17,.16); }
-.work-card-cover { position:relative; height:clamp(190px,22vw,290px); overflow:hidden; background:#e9e7de; }
-.work-card-cover .work-status { position:absolute; top:1rem; right:1rem; border:0; border-radius:999px; box-shadow:0 .25rem .75rem rgba(0,0,0,.14); }
+.work-card-cover { position:relative; height:auto; aspect-ratio:8/5; overflow:hidden; background:#e9e7de; }
+.work-card-cover img { object-fit:contain; }
+.work-card:hover .work-card-cover img { transform:none; filter:none; }
 .work-card-meta,.work-card h2,.work-description,.work-card .architecture,.work-card .work-tools,.work-card-link { width:calc(100% - 3rem); margin-right:auto; margin-left:auto; }
 .work-card-meta { margin-top:1.6rem; min-height:0; }
 .work-card h2 { margin-top:.45rem; }

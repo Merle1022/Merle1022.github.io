@@ -1,6 +1,8 @@
 ---
 title: "12 週執行力陪跑營｜小組陪跑服務"
 description: "每班 3 人、每週固定會議與進度追蹤，陪伴有明確目標卻難以持續行動的成人，把計畫一步步做出來。"
+image: "works/covers/12week-coaching.webp"
+imageAlt: "12 週執行力陪跑營概念插畫：十二週進度路徑與三人小組會議桌"
 date: 2026-10-04
 tags: [執行力, 目標管理, 小組陪跑]
 status: "招生中"

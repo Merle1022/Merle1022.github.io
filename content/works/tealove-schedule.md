@@ -1,6 +1,8 @@
 ---
 title: "鮮茶樂｜飲料店排班系統"
 description: "把每週排班、工時薪資、角色權限與庫存盤點整合成一套可從瀏覽器使用的店務管理工具。"
+image: "works/covers/tealove-schedule.webp"
+imageAlt: "鮮茶樂排班系統概念插畫：每週班表、茶杯與原物料罐"
 date: 2026-07-12
 tags: [營運工具, 排班系統, Google Apps Script]
 status: "已上線"
