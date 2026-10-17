@@ -1,8 +1,6 @@
 ---
 title: NFC 貼紙怎麼用？用 iPhone 捷徑自動記錄喝水
 description: 用 NFC 貼紙搭配 iPhone 捷徑，自動把喝水容量寫入 Apple 健康。本文以每天 3,000 ml 的個人紀錄為例，整理 NFC 自動化設定、權限與常見失敗原因。
-image: blog/nfc-water-tracking/shortcut-health-water.png
-imageAlt: iPhone 捷徑中的喝水 NFC，自動記錄 1,000 毫升水分到 Apple 健康
 date: 2026-05-18
 updatedDate: 2026-09-28
 author: 梅爾 Merle
@@ -21,6 +19,8 @@ faqs:
     answer: 先確認自動化已啟用「立即執行」，再檢查「健康」的寫入權限、NFC 貼紙位置，以及手機是否成功感應標籤。
   - question: Android 也能用 NFC 自動記錄喝水嗎？
     answer: 可以，但本文步驟是 iPhone 版本。Android 可搭配手機內建自動化功能或 Tasker 等工具，實際設定會因品牌與系統版本而異。
+image: "blog/covers/nfc-iphone-shortcuts-water-tracking.webp"
+imageAlt: "NFC 喝水紀錄的概念插畫：貼有感應貼紙的水杯與手機"
 ---
 
 我以前不是不知道要喝水，而是常常喝完就忘了記。手動打開 App、找到水分、輸入容量，單看每一步都不難，但每天重複幾次就很容易放棄。

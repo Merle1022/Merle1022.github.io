@@ -5,9 +5,9 @@ date: YYYY-MM-DD
 author: "梅爾 Merle"
 tags: []
 draft: true
+image: "" # 發布前填入 blog/covers/文章網址名稱.webp
+imageAlt: "" # 發布前填入圖片具體描述
 # 有需要再填入下列選填欄位：
-# image: /blog/文章目錄/cover.webp
-# imageAlt: 圖片的具體描述
 # updatedDate: YYYY-MM-DD
 # series:
 #   title: 專欄名稱

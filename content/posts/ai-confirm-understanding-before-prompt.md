@@ -10,6 +10,8 @@ series:
   slug: "ai-class-notes"
 affiliateDisclosure: false
 draft: false
+image: "blog/covers/ai-confirm-understanding-before-prompt.webp"
+imageAlt: "AI 協作的概念插畫：兩個對話框以黃色連接件相互連結"
 ---
 
 如果 AI 給你的答案總是離題、看起來很認真卻沒抓到重點，問題多半不在你的 prompt 寫得不夠好，而在你還沒確認它有沒有看懂，就急著叫它動手。最快的解法是：把資料貼上去後，先問一句「你看到什麼？」，等它複述、確認理解沒偏，再給任務。順序永遠是「先確認理解 → 再給方向 → 最後才執行」。

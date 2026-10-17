@@ -7,6 +7,8 @@ author: "梅爾 Merle"
 tags: [菲律賓遊學, 碧瑤遊學, Wales語言學校, 菲律賓語言學校, PTE, 英文學習, 遊學心得]
 affiliateDisclosure: false
 draft: false
+image: "blog/covers/baguio-wales-language-school-review.webp"
+imageAlt: "碧瑤遊學的概念插畫：霧中山城、松樹與語言學習筆記"
 ---
 
 網路上和代辦提供的資料，常把碧瑤（Baguio）形容成氣候涼爽、適合專心念英文的遊學城市。
