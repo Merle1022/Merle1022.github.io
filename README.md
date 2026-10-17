@@ -35,10 +35,14 @@ npm run dev
 - GitHub repository：`Merle1022/Merle1022.github.io`；Pages production branch 為 `main`，已啟用自動部署；PR #3 已核准合併。
 - Cloudflare Pages 專案名稱：`merle-website`。
 - Build command：`npm run build`，Build output directory：`dist`；由 Pages 自動部署。
-- 靜態檔目錄：`dist`；不使用 SSR／資料庫，沒有每次瀏覽都執行的 Worker 程式。
+- 靜態檔目錄：`dist`；文章與頁面維持靜態，不使用 SSR。只有 `/api/likes` 使用 Pages Functions 與 D1，文章尾端才載入愛心。
 - Node 版本：`.node-version`；可明確設定 `SITE_URL=https://merle188.com`、`BASE_PATH=/`。
 - 使用 Cloudflare Pages Git 整合部署。新網域的 Sitemap、RSS、robots.txt 與 canonical 由建置產生；12週陪跑的獨立 HTML 已更新分享網址。
 - `tealove-schedule` 是另一個獨立作品，仍保留它原本的 GitHub Pages 服務網址。
 - 搬站驗收與回復流程見 [docs/cloudflare-migration.md](docs/cloudflare-migration.md)。
 
 GitHub Pages 不支援任意 HTTP 301 規則；舊站使用立即 meta refresh 與 canonical，並以 JavaScript 保留查詢參數及 fragment。它不會設定整個使用者網站的 CNAME，因此其他 repository 的專案網站不會被一起改網域。
+
+## 文章互動
+
+全部文章底部提供可取消的共用愛心、LINE／Threads／Facebook 分享、複製連結及裝置支援時的原生分享；另連到既有 Portaly 贊助頁。設定與驗證見 [docs/article-engagement.md](docs/article-engagement.md)。

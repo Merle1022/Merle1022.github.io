@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # Legacy host redirect artifact
 legacy-dist/
+
+# Local engagement state and build-generated API allowlist
+.wrangler/
+lib/engagement/generated/
