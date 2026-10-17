@@ -2,9 +2,13 @@
 
 以 Astro 官方 Blog template 為基礎的個人部落格與作品集，正式主機為 Cloudflare Pages，網域為 merle188.com。
 
+## 專案入口
+
+主要工作資料夾是 `/Users/mac/Documents/01_專案/個人網站作品集`。規則、版型與文章都在本專案內；從 [00｜索引.md](00｜索引.md) 開始，規則見 [AGENTS.md](AGENTS.md)，自動套用項目見 [文章框架.md](文章框架.md)。`CLAUDE.md` 是同一份規則的符號連結。
+
 ## 寫文章
 
-在 `content/posts/` 新增 Markdown 或 MDX：
+先複製 [templates/article.md](templates/article.md) 到 `content/posts/`，填入欄位並保持草稿；完整文章經 Merle 明確同意後才發布。Markdown 或 MDX 的欄位範例：
 
 ```yaml
 ---
@@ -12,7 +16,7 @@ title: "文章標題"
 description: "文章摘要"
 date: 2026-07-20
 tags: [設計, 筆記]
-draft: false
+draft: true
 ---
 ```
 
@@ -22,7 +26,7 @@ draft: false
 
 ```sh
 npm install
-npm run dev
+npm run dev -- --background
 ```
 
 ## GitHub Pages 與自訂網域
