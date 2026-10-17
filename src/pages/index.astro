@@ -1,15 +1,31 @@
 ---
 import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
-import PostList from '../components/PostList.astro';
+import ArrowRight from 'bootstrap-icons/icons/arrow-right.svg';
+import Leaf from 'bootstrap-icons/icons/leaf.svg';
 import { SITE_DESCRIPTION, SITE_TITLE, withBase } from '../consts';
-import heroOne from '../assets/blog-placeholder-1.jpg';
-import heroTwo from '../assets/blog-placeholder-4.jpg';
-import heroThree from '../assets/blog-placeholder-about.jpg';
+import { readingTime } from '../utils/reading-time.mjs';
 
+// New published articles appear automatically; ties use the stable content id.
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
-	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf() || b.id.localeCompare(a.id));
+const [featured, ...otherPosts] = posts;
+const works = await getCollection('works');
+const selectedWorks = ['ai-team-quest', 'tealove-schedule']
+  .map((id) => works.find((work) => work.id === id)).filter(Boolean);
+const shortTitles: Record<string, string> = {
+  'why-icebreakers-need-role-cards': '活動破冰怎麼做？用角色卡開始聊天',
+  '12-week-year-coaching-guide': '《12週做完一年工作》怎麼實踐？',
+  'government-ai-training-review': '經濟部 AI 課程值得參加嗎？',
+};
+const homeSummaries: Record<string, string> = {
+  'why-icebreakers-need-role-cards': '分享我在 AI Team Quest 設計相遇角色卡的過程，用 24 題日常情境產生合作魔物，讓陌生人找到話題、開始交流。',
+  '12-week-year-coaching-guide': '從第一期 12 週陪跑的真實紀錄，整理拆解目標、追蹤行動，以及計畫容易失焦的地方。',
+  'government-ai-training-review': '在臺中科大完成 240 小時培訓後，整理學習獎勵、企業專題與師資落差，給正在考慮的人參考。',
+};
+const dateLabel = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.');
+const cover = featured?.data.image || featured?.body?.match(/!\[[^\]]*\]\(([^\s)]+)/)?.[1];
+const coverUrl = cover && (/^https?:\/\//.test(cover) ? cover : withBase(cover));
 const personSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Person',
@@ -27,29 +43,119 @@ const personSchema = {
 	description: '整理生活體驗、AI 職場協作流程與數位工具開發，並推廣素食共桌生活專案。',
 };
 ---
-<PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION} isHome>
-	<script slot="head" type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-	<section class="hero home-hero" style={`--hero-one: url(${heroOne.src}); --hero-two: url(${heroTwo.src}); --hero-three: url(${heroThree.src});`}>
-		<div class="hero-art" aria-hidden="true">
-			<div class="hero-art-panel hero-art-panel-one"></div>
-			<div class="hero-art-panel hero-art-panel-two"></div>
-			<div class="hero-art-panel hero-art-panel-three"></div>
-		</div>
-		<div class="hero-content">
-			<p class="eyebrow">MERLE · WRITING · AI · SLOW LIVING</p>
-			<h1>把生活<br />整理成<br /><span>可延伸的內容</span></h1>
-			<div class="hero-note">
-				<p>記錄移動生活、AI 協作與素食日常，把親身走過的路，化成能被閱讀、使用與延伸的內容。</p>
-				<a class="primary-action" href={withBase('blog/')}>開始閱讀 <span aria-hidden="true">→</span></a>
-			</div>
-		</div>
-	</section>
-	<section class="latest-posts" aria-labelledby="latest-posts">
-		<div class="section-heading">
-			<p class="eyebrow">SELECTED NOTES</p>
-			<h2 id="latest-posts">最新文章與正在發生的事</h2>
-			<p>{posts.length} 篇筆記</p>
-		</div>
-		<PostList posts={posts} variant="cards" />
-	</section>
+<PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <div class="editorial-home">
+    <section class="home-intro" aria-labelledby="home-title">
+      <p class="section-label">梅爾 MERLE</p>
+      <h1 id="home-title">AI 與生活的實作筆記</h1>
+      <p class="intro-copy">我是梅爾 Merle。把親自試過的工具、走過的路，<br class="desktop-break" />整理成可以帶走的筆記。</p>
+      <div class="intro-actions">
+        <a class="read-action" href={withBase('blog/')}>開始閱讀 <ArrowRight aria-hidden="true" /></a>
+        <a class="works-action" href={withBase('works/')}>看看我的作品</a>
+      </div>
+    </section>
+    <div class="reading-grid">
+      {featured && <article class="featured-note">
+        <a class="feature-link" href={withBase(`blog/${featured.id}/`)}>
+          {coverUrl && <img class="feature-image" src={coverUrl} alt={featured.data.imageAlt || featured.data.title} width="1200" height="750" fetchpriority="high" />}
+          <h2>{shortTitles[featured.id] || featured.data.title}</h2>
+        </a>
+        <p class="note-meta"><time datetime={featured.data.date.toISOString()}>{dateLabel(featured.data.date)}</time><span>閱讀約 {readingTime(featured.body)} 分鐘</span></p>
+        <p class="feature-description">{homeSummaries[featured.id] || featured.data.description}</p>
+      </article>}
+      <aside class="home-sidebar" aria-label="最新文章與作者介紹">
+        <section aria-labelledby="recent-title">
+          <h2 id="recent-title" class="section-label">最新文章</h2>
+          <ol class="recent-notes">
+            {otherPosts.slice(0, 2).map((post) => <li>
+              <a href={withBase(`blog/${post.id}/`)}>
+                <time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time>
+                <h3>{shortTitles[post.id] || post.data.title}</h3>
+                <p>{homeSummaries[post.id] || post.data.description}</p>
+                <ArrowRight class="note-arrow" aria-hidden="true" />
+              </a>
+            </li>)}
+          </ol>
+        </section>
+        <section class="author-note" aria-labelledby="author-title">
+          <h2 class="section-label" id="author-title">關於我</h2>
+          <h3>梅爾 Merle</h3>
+          <p>我把親身做過、踩過坑、重新整理過的流程寫下來，讓 AI、網站與生活裡的複雜問題，變成可以被理解與實際使用的內容。</p>
+          <a class="about-link" href={withBase('about/')}>更多關於我 <ArrowRight aria-hidden="true" /></a>
+        </section>
+      </aside>
+    </div>
+    <section class="home-projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-label">做出來的東西</h2>
+      <div class="project-links">
+        {selectedWorks.map((work) => work && <a class="project-link" href={work.data.detail ? withBase(work.data.detail) : work.data.url || withBase('works/')}>
+          <div class="project-mark" aria-hidden="true">{work.id === 'ai-team-quest' ? <img src={withBase('blog/ai-team-quest/cover-designed.webp')} alt="" width="72" height="72" loading="lazy" /> : <Leaf />}</div>
+          <div><h3>{work.id === 'ai-team-quest' ? 'AI Team Quest' : '鮮茶樂排班系統'}</h3><p>{work.id === 'ai-team-quest' ? '用相遇角色卡打開話題，讓第一次見面也有話聊。' : '把排班、工時與庫存整理在一起，讓店務管理更順手。'}</p></div>
+          <ArrowRight aria-hidden="true" />
+        </a>)}
+      </div>
+    </section>
+  </div>
 </PageLayout>
+<style>
+  :global(body:has(.editorial-home) .container) { width:min(1180px,calc(100% - 40px)); }
+  :global(body:has(.editorial-home) .site-header) { background:var(--bg); }
+  .editorial-home { padding:0 0 1rem; }
+  .home-intro { padding:0 0 2.2rem; border-bottom:1px solid var(--line); }
+  .section-label { margin:0 0 1rem; color:#766800; font-size:.8rem; font-weight:800; letter-spacing:.16em; line-height:1.5; }
+  .home-intro .section-label { margin-bottom:.65rem; }
+  h1 { margin:0 0 1rem; font-size:clamp(2.2rem,5.45vw,4.7rem); font-weight:900; line-height:1.2; letter-spacing:-.045em; }
+  .intro-copy { margin:0; color:#555; font-size:clamp(1rem,1.65vw,1.3rem); line-height:1.65; }
+  .intro-actions { display:flex; flex-wrap:wrap; gap:.85rem; margin-top:1.3rem; }
+  .intro-actions a { display:inline-flex; align-items:center; justify-content:center; gap:2.5rem; min-height:48px; padding:.7rem 1.35rem; font-size:.9rem; font-weight:800; text-decoration:none; transition:background .2s; }
+  .read-action { background:var(--accent); border:1px solid var(--accent); }
+  .read-action:hover { background:#ead12f; }
+  .works-action { min-width:160px; border:1px solid #c9c7bf; }
+  .works-action:hover { background:#eeede6; }
+  svg { flex:none; width:20px; height:20px; }
+  a:focus-visible { outline:3px solid #111; outline-offset:5px; }
+  .reading-grid { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); gap:2.25rem; padding:2.1rem 0 2rem; }
+  .featured-note { min-width:0; }
+  .feature-link { text-decoration:none; }
+  .feature-image { display:block; width:100%; height:auto; aspect-ratio:1.94; object-fit:cover; }
+  .featured-note h2 { margin:1rem 0 .4rem; font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.35; letter-spacing:-.04em; }
+  .feature-link:hover h2,.recent-notes a:hover h3,.project-link:hover h3 { text-decoration:underline; text-decoration-color:#a68f00; text-underline-offset:.2em; }
+  .note-meta { display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin:.3rem 0 .65rem; color:#777; font-size:.85rem; }
+  .feature-description { margin:0; color:#666; font-size:1rem; line-height:1.8; }
+  .home-sidebar { padding-left:2.25rem; border-left:1px solid var(--line); }
+  .home-sidebar .section-label { margin-bottom:.8rem; }
+  .recent-notes { list-style:none; margin:0; padding:0; }
+  .recent-notes li { padding:0 0 1rem; margin:0 0 1rem; border-bottom:1px solid var(--line); }
+  .recent-notes a { position:relative; display:block; text-decoration:none; padding-right:1.8rem; }
+  .recent-notes time { color:#777; font-size:.85rem; }
+  .recent-notes h3 { margin:.1rem 0 .5rem; font-size:1.08rem; line-height:1.45; letter-spacing:-.025em; }
+  .recent-notes p,.author-note p { margin:0; color:#666; font-size:1rem; line-height:1.7; }
+  .note-arrow { position:absolute; top:1.5rem; right:0; }
+  .author-note h3 { margin:0 0 .5rem; font-size:1.2rem; }
+  .about-link { display:inline-flex; align-items:center; gap:1rem; margin-top:.8rem; text-decoration:none; font-size:.9rem; font-weight:700; min-height:36px; }
+  .about-link:hover { text-decoration:underline; }
+  .home-projects { display:grid; grid-template-columns:130px 1fr; gap:1.2rem; padding-top:1.7rem; border-top:1px solid var(--line); }
+  .project-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .project-link { display:flex; align-items:center; gap:1.3rem; min-width:0; padding-right:1.6rem; text-decoration:none; }
+  .project-link + .project-link { padding:0 0 0 1.6rem; border-left:1px solid var(--line); }
+  .project-link > svg { margin-left:auto; }
+  .project-link h3 { font-size:1rem; margin:0 0 .25rem; }
+  .project-link p { margin:0; font-size:.85rem; line-height:1.6; color:#666; }
+  .project-mark { flex:none; display:grid; place-items:center; width:60px; height:60px; overflow:hidden; border-radius:9px; background:#fff; box-shadow:0 1px 6px #00000012; }
+  .project-mark img { width:100%; height:100%; object-fit:cover; object-position:75% center; }
+  .project-mark svg { width:36px; height:36px; color:#547c2b; }
+  @media(min-width:1000px) { .editorial-home { margin-top:-3.1rem; } }
+  @media(max-width:900px) { .home-projects { grid-template-columns:1fr; } .reading-grid { gap:1.5rem; } .home-sidebar { padding-left:1.5rem; } }
+  @media(max-width:680px) {
+    .desktop-break { display:none; }
+    .home-intro { padding-bottom:1.7rem; }
+    .reading-grid { grid-template-columns:1fr; padding-block:1.7rem; gap:2rem; }
+    .home-sidebar { padding-left:0; border-left:0; border-top:1px solid var(--line); padding-top:1.7rem; }
+    .feature-image { aspect-ratio:1.6; }
+    .project-links { grid-template-columns:1fr; gap:1.25rem; }
+    .project-link { padding-right:0; }
+    .project-link + .project-link { border-left:0; border-top:1px solid var(--line); padding:1.25rem 0 0; }
+    .intro-actions a { flex:1; padding-inline:1rem; gap:1.2rem; }
+  }
+</style>
