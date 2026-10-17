@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-17",
+  "tool": "built-in image_gen",
+  "direction": "Merle approved: large readable titles and refined illustrated covers, matching role-card quality",
+  "firstApprovedPrompt": "Use case: ads-marketing. Create ONE finished Traditional Chinese blog article cover, wide 8:5 landscape, 1600x1000 preferred. The attached existing AI TEAM QUEST fox article cover is a STYLE AND TYPOGRAPHIC QUALITY reference only, not an edit target. Match its premium richly detailed illustration, immediate visual identity, huge confidently typeset Chinese title, cinematic depth, midnight blue, luminous jade/teal, ivory and restrained antique gold. Do NOT include its fox, character cards, title or AI TEAM QUEST branding: the new topic is practicing the book The 12 Week Year and a personal 12-week accountability experience. We need a memorable DESIGNED COVER, not generic stock illustration, beige stationery still life, a blank notebook photo or a website mockup. Composition: left 52% contains exceptionally bold high-contrast large Traditional Chinese editorial lettering, right 48% one magnificent crafted timekeeping object: an intricate ivory-and-jade mechanical calendar/compass with twelve luminous golden weekly markers, a small spiralling path of paper calendar leaves and a pencil, dramatically lit with fine gold filigree and subtle star-chart engraving, beautiful tactile details and strong silhouette, layered clouds and teal light traces add depth sparingly. No people, no animals, no fake official credentials, no financial charts. Keep typography readable and dominant even at a 320px thumbnail, all key content comfortably inside an 8% edge-safe margin. Exact text and nothing else: small top badge 'MERLE NOTES'; giant main title split into two lines '12週做完' and '一年工作'; smaller but legible subtitle '實踐心得 × 陪跑紀錄'. Title is the book topic, do not claim guaranteed results or add slogans. Chinese characters must be correct, arranged naturally, not distorted. Match the reference's expressive and carefully composed cover-art quality while keeping text clean and sharp. Full-bleed midnight illustration; elegant mint/ivory title treatment with selective golden accents, clear separation between type and illustration. No generic flat icons, no collage borders, no washed-out cream background.",
+  "common": "Use case: ads-marketing. Produce ONE finished Traditional Chinese blog cover, 1600x1000 landscape 8:5. The two attached images are STYLE references, not edit targets: match their giant readable Chinese lettering, highly polished richly detailed illustration, magical cinematic depth and strong authored cover design. This is an approved series for Merle's blog. Composition: left 51% dedicated to HUGE sharp editorial Chinese headline, right 49% a distinctive article-specific illustrated object/scene. Midnight navy background, radiant jade/teal, ivory and restrained antique gold, detailed realistic materials and fine gold engraving, soft illuminated clouds and a few elegant star-chart arcs supporting depth, luminous but not cluttered. Every cover must have its own recognizable primary subject, not reuse the fox or clock. Important: designed title-led artwork, not generic beige illustration, not stock stationery photo, not a webpage mockup or a montage. Keep title and key object in an 8% edge-safe area, readable as a small 320px thumbnail. Use correct Traditional Chinese; natural line breaks exactly as specified; mixed Latin letters must also be correct. The title is editable-looking graphic typography rendered into the image, clean clear counters, high contrast. No extra copy, watermark, prices, fake credentials, official emblems or logos. Small top badge exactly 'MERLE NOTES'. Exact headline lines and subtitle follow. ",
+  "assets": [
+    {
+      "id": "ai-confirm-understanding-before-prompt",
+      "lines": [
+        "AI 聽不懂？",
+        "先確認理解"
+      ],
+      "subtitle": "職場協作實作筆記",
+      "subject": "Two exquisite three-dimensional ivory and jade conversation bubbles floating above an open leather notebook, joined by a luminous gold bridge with one carefully interlocking puzzle connector; rich engraved edge details and tiny constellation sparks. Clearly communicates mutual understanding, not robots or automation charts."
+    },
+    {
+      "id": "baguio-wales-language-school-review",
+      "lines": [
+        "碧瑤遊學",
+        "真實心得"
+      ],
+      "subtitle": "Wales 語言學校｜2 個月紀錄",
+      "subject": "An exquisite illustrated miniature Philippine mountain-town journey emerging from an open travel journal, misty layered green mountains, pine trees, compact colorful hillside buildings, an elegant backpack and pencil in foreground, dramatic cool jade mountain mist with warm gold window lights. A dreamlike symbolic travel illustration, never pretend to show the real Wales campus, no invented recognizable landmark or real school logo."
+    },
+    {
+      "id": "government-ai-training-review",
+      "lines": [
+        "240 小時",
+        "AI 課程心得"
+      ],
+      "subtitle": "青年 AI 實戰養成班",
+      "subject": "A magnificent ivory-and-jade laptop with gold detailed trim, its screen projects a luminous sculptural crystal brain assembled from connected golden modular blocks; an open course notebook and pencil, richly crafted hands-on workshop objects, strong elegant depth. No government emblems, no fake credential or diploma."
+    },
+    {
+      "id": "new-media-marketing-certification-kaohsiung",
+      "lines": [
+        "自媒體證照",
+        "值得考嗎？"
+      ],
+      "subtitle": "準備方法 × 考試心得",
+      "subject": "A richly detailed professional camera lens with ivory and antique gold housing, a beautiful black-and-jade smartphone and a practice exam notebook with a quill-like metallic pencil; a luminous gold checklist motif on floating blank paper, strong tangible study and new-media imagery. No government seals, no fabricated official certificate, no real brand logos."
+    },
+    {
+      "id": "nfc-iphone-shortcuts-water-tracking",
+      "lines": [
+        "NFC 貼紙",
+        "自動記錄喝水"
+      ],
+      "subtitle": "iPhone 捷徑實作",
+      "subject": "An extraordinary crystal-clear drinking glass half-filled with shimmering jade-blue water, an elegant round black-and-gold NFC contactless tag attached to glass, an ivory-and-obsidian modern smartphone beside it, one luminous gold-and-mint signal ribbon connecting tag and phone, delicate water droplets and enchanting caustic reflections. Phone contains a single stylized water drop, no UI text, no health promises."
+    },
+    {
+      "id": "why-i-built-my-own-website",
+      "lines": [
+        "我的個人網站",
+        "為什麼選 Astro"
+      ],
+      "subtitle": "成本 × SEO／GEO × 平台選擇",
+      "subject": "A beautiful architectural pop-up personal website emerging from an open ivory book: layered obsidian and jade browser-page frames with gold beveled edges, one central portal-like browser window, floating editorial picture panels and a mechanical pencil; sumptuous material detail with a coherent tangible silhouette, suggests building a personal digital home. No fake product screenshots or fabricated code."
+    }
+  ]
+}

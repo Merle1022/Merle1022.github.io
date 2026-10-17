@@ -10,8 +10,8 @@ series:
   slug: "building-my-site"
 affiliateDisclosure: false
 draft: false
-image: "blog/covers/why-i-built-my-own-website.webp"
-imageAlt: "個人網站的概念插畫：紙張網頁、瀏覽器視窗與黃色分頁"
+image: "blog/covers/why-i-built-my-own-website-v2.webp"
+imageAlt: "我的個人網站為什麼選 Astro：搭配立體網頁與書頁的概念插畫封面"
 ---
 
 我一直知道自己需要一個可以長期累積內容的地方，但「開始寫」和「現在就花錢架一個網站」其實是兩個不同的決定。
