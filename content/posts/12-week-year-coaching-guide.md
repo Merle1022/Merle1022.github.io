@@ -6,8 +6,8 @@ author: "梅爾 Merle"
 tags: [12週做完一年工作, 12週計畫, 拖延, 時間管理, 目標設定, 陪跑]
 affiliateDisclosure: false
 draft: false
-image: "blog/covers/12-week-year-coaching-guide.webp"
-imageAlt: "十二週計畫的概念插畫：週曆紙頁、時鐘與行動筆記"
+image: "blog/covers/12-week-year-coaching-guide-v2.webp"
+imageAlt: "12週做完一年工作：帶有大標題、翡翠金色時鐘與週曆的概念插畫封面"
 ---
 
 待辦清單越寫越長，真正重要的事卻總是排到明天。你試過早起、換一套時間管理工具，也認真訂過目標；到了週末回頭看，還是說不清自己離目標近了多少。如果你正卡在這裡，問題值得拆開看：這週要做的事夠明確嗎？排得進生活嗎？做完後，有沒有回頭檢查它是否真的推動目標？

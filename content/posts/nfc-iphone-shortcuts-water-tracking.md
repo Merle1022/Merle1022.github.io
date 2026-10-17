@@ -19,8 +19,8 @@ faqs:
     answer: 先確認自動化已啟用「立即執行」，再檢查「健康」的寫入權限、NFC 貼紙位置，以及手機是否成功感應標籤。
   - question: Android 也能用 NFC 自動記錄喝水嗎？
     answer: 可以，但本文步驟是 iPhone 版本。Android 可搭配手機內建自動化功能或 Tasker 等工具，實際設定會因品牌與系統版本而異。
-image: "blog/covers/nfc-iphone-shortcuts-water-tracking.webp"
-imageAlt: "NFC 喝水紀錄的概念插畫：貼有感應貼紙的水杯與手機"
+image: "blog/covers/nfc-iphone-shortcuts-water-tracking-v2.webp"
+imageAlt: "NFC 貼紙自動記錄喝水：搭配感應標籤水杯與手機的概念插畫封面"
 ---
 
 我以前不是不知道要喝水，而是常常喝完就忘了記。手動打開 App、找到水分、輸入容量，單看每一步都不難，但每天重複幾次就很容易放棄。

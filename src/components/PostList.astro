@@ -45,3 +45,10 @@ const coverFor = (post: CollectionEntry<'posts'>) => {
 		</li>
 	))}
 </ol>
+
+<style>
+  /* Keep the complete title-led artwork visible at every card width. */
+  .post-card-cover { height:auto; aspect-ratio:8/5; }
+  .post-card-cover img { object-fit:contain; }
+  .post-card:hover .post-card-cover img { transform:none; filter:none; }
+</style>
