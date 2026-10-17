@@ -57,4 +57,4 @@ Consult these guides before working on related tasks:
 - 唯一共用規則以本檔 `AGENTS.md` 為準；`CLAUDE.md` 是指向本檔的符號連結，兩個名稱讀到的是同一份內容，不另行改寫或維護第二套規則。不要另建內容重複的 `agent.md`。
 - 開始新增或調整文章前，閱讀根目錄 `文章框架.md`；新文章可複製 `templates/article.md`。正文寫作彈性保留，不強制所有文章使用相同段落。
 - 共用呈現入口是 `src/layouts/BlogPost.astro`，愛心／分享／贊助是 `src/components/ArticleEngagement.astro`，欄位驗證是 `src/content.config.ts`。一般文章放在 `content/posts/`，勿逐篇複製共用介面。
-- 本機備份放 `.local-backups/`，不得 commit、push 或部署；未核准文章與暫緩的翻譯、留言功能也不得因同步而上線。
+- 本機備份放 `.local-backups/`，不得提交到公開倉庫或部署。Merle 明確授權後，可將備份提交至獨立 Private 倉庫；未核准文章與暫緩的翻譯、留言功能仍不得因備份而上線。
