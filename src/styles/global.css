@@ -234,3 +234,6 @@ main.container { min-height:calc(100vh - 132px); padding-block:clamp(3rem,7vw,7r
 .prose .article-figure img { width:min(100%,258px); max-width:100%; margin:0 auto; }
 .prose .article-figure figcaption { margin-top:.6rem; color:var(--muted); font-size:.8rem; }
 @media(max-width:520px){.prose img{max-height:360px}.prose .article-figure img{width:min(100%,220px)}}
+
+/* Keep long inline URLs from widening article layouts on small screens. */
+.prose :not(pre) > code { overflow-wrap:anywhere; }
